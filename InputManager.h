@@ -6,6 +6,7 @@ class InputManager
 {    
 private:
     Player* player;
+    
 public:
     InputManager(Player* player);
     void GetInput();

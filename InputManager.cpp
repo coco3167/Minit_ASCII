@@ -39,7 +39,14 @@ void InputManager::GetInput()
         movement |= RIGHT;
     }
 
-    player->move(movement);
-
+    if(movement != 0)
+    {
+        player->move(movement);
+    }
+        
     //Menuing
+    if(GetAsyncKeyState(VK_ESCAPE))
+    {
+        exit(0);
+    }
 }
