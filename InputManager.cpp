@@ -15,7 +15,7 @@ InputManager::InputManager(Player* player)
     this->player = player;
 }
 
-void InputManager::getInput()
+void InputManager::getInput() const
 {
     int movement = 0;
     

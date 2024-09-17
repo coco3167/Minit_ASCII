@@ -16,7 +16,7 @@ int main()
         outputManager.clearBuffer();  // R�initialiser le buffer
         inputManager.getInput();
         entityManager.updateAll();
-        /outputManager.drawBuffer();  // Afficher le buffer sur la console
+        outputManager.drawBuffer();  // Afficher le buffer sur la console
 
         Sleep(100);  // Pause pour ralentir l'affichage
     }
