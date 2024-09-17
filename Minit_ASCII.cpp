@@ -9,11 +9,11 @@ int main()
     InputManager inputManager = InputManager(&player);
 
     while (true) {
-        outputManager.clearBuffer();  // Réinitialiser le buffer
+        outputManager.clearBuffer();
         inputManager.GetInput();
-        outputManager.drawBuffer();  // Afficher le buffer sur la console
+        outputManager.drawBuffer(); 
 
-        Sleep(100);  // Pause pour ralentir l'affichage
+        Sleep(100);
     }
     return 0;
 }
