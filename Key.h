@@ -4,5 +4,5 @@
 class Key : public InteractableEntity
 {
 public:
-    
+    void onInteract(Entity* interactor) override;
 };

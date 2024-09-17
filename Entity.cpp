@@ -1,5 +1,11 @@
 ﻿#include "Entity.h"
 
+/*
+====================
+Getter
+====================
+*/
+
 Vector2 Entity::getPosition() const
 {
     return Position;
@@ -14,6 +20,12 @@ std::vector<std::string> Entity::getSprite() const
 {
     return sprite;
 }
+
+/*
+====================
+Setter
+====================
+*/
 
 void Entity::setSprite(const std::vector<std::string>& sprite)
 {

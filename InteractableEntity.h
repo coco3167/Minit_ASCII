@@ -4,5 +4,6 @@
 class InteractableEntity : public Entity
 {
 public:
+    virtual void onInteract(Entity* interactor) = 0;
     
 };
