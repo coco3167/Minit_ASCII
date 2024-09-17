@@ -1,9 +1,13 @@
-
-#include <iostream>
+#include "InputManager.h"
 
 int main(int argc, char* argv[])
 {
-    std::cout << "Hello World!\n";
+    Player player = Player();
+    InputManager inputManager = InputManager(&player);
+    while(true)
+    {
+        inputManager.GetInput();
+    }
     
     return 0;
 }
