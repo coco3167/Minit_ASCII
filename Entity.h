@@ -15,11 +15,11 @@ public:
 
     // Setter
     void setSprite(const std::vector<std::string>& sprite);
-    void setPosition(const Vector2& Position);
+    void setPosition(const Vector2& position);
     void setHidden(bool hidden);
     
 private:
-    Vector2 Position;
+    Vector2 position;
     bool hidden;
     std::vector<std::string> sprite;
     

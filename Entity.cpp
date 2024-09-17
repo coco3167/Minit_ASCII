@@ -8,7 +8,7 @@ Getter
 
 Vector2 Entity::getPosition() const
 {
-    return Position;
+    return position;
 }
 
 bool Entity::isHidden() const
@@ -32,9 +32,9 @@ void Entity::setSprite(const std::vector<std::string>& sprite)
     this->sprite = sprite;
 }
 
-void Entity::setPosition(const Vector2& Position)
+void Entity::setPosition(const Vector2& position)
 {
-    this->Position = Position;
+    this->position = position;
 }
 
 void Entity::setHidden(bool hidden)
