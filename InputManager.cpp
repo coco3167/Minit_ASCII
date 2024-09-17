@@ -2,30 +2,44 @@
 #include <Windows.h>
 #include <iostream>
 
+#include "Direction.h"
+
+// Keyboard hex adress
 int const Z = 0x5A;
 int const S = 0x53;
 int const Q = 0x51;
 int const D = 0x44;
 
-InputManager::InputManager(Player const* player)
+InputManager::InputManager(Player* player)
 {
     this->player = player;
 }
 
 void InputManager::GetInput()
 {
+    int movement = 0;
     //Movement
     if(GetAsyncKeyState(VK_UP) || GetAsyncKeyState(Z))
-        std::cout << "Up" << std::endl;
+    {
+        movement |= UP;
+    }
 
     if(GetAsyncKeyState(VK_DOWN) || GetAsyncKeyState(S))
-        std::cout << "Down" << std::endl;
+    {
+        movement |= DOWN;
+    }
     
     if(GetAsyncKeyState(VK_LEFT) || GetAsyncKeyState(Q))
-        std::cout << "Left" << std::endl;
+    {
+        movement |= LEFT;
+    }
 
     if(GetAsyncKeyState(VK_RIGHT) || GetAsyncKeyState(D))
-        std::cout << "Right" << std::endl;
+    {
+        movement |= RIGHT;
+    }
+
+    player->move(movement);
 
     //Menuing
 }

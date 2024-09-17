@@ -9,8 +9,4 @@ public:
 
 private:
     int key = 0;
-    
-    void move(int direction) override;
-    bool canMove(int direction) override;
-    void attack(int damage) override;
 };

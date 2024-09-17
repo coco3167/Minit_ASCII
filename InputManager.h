@@ -1,13 +1,12 @@
 #pragma once
-#include <Windows.h>
 
 #include "Player.h"
 
 class InputManager
 {    
 private:
-    Player const* player;
+    Player* player;
 public:
-    InputManager(Player const* player);
+    InputManager(Player* player);
     void GetInput();
 };
