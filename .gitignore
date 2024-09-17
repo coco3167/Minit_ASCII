@@ -34,3 +34,7 @@
 # Code Editors
 .idea
 .vs
+
+*.vcxproj
+*.filters
+*.sln
