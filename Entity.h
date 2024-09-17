@@ -1,15 +1,26 @@
 ﻿#pragma once
-#include <unordered_set>
+#include <string>
+#include <vector>
+#include "Vector2.h"
 
-#include "vector2_t.h"
 
 class Entity
 {
-public:
 
-protected:
+public:
+    // Getter
+    Vector2 getPosition() const;
+    bool isHidden() const;
+    std::vector<std::string> getSprite() const;
+
+    // Setter
+    void setSprite(const std::vector<std::string>& sprite);
+    void setPosition(const Vector2& Position);
+    void setHidden(bool hidden);
     
 private:
-    vector2_t position;
+    Vector2 Position;
+    bool hidden;
+    std::vector<std::string> sprite;
     
 };
