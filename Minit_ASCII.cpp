@@ -1,3 +1,4 @@
+#include "EntityManager.h"
 #include "InputManager.h"
 #include "OutputManager.h"
 
@@ -7,11 +8,15 @@ int main()
     outputManager.setFixedConsoleSize(WIDTH, HEIGHT);
     Player player = Player();
     InputManager inputManager = InputManager(&player);
+    EntityManager entityManager = EntityManager();
+
+    entityManager.addEntity(&player);
 
     while (true) {
-        outputManager.clearBuffer();  // Réinitialiser le buffer
-        inputManager.GetInput();
-        outputManager.drawBuffer();  // Afficher le buffer sur la console
+        outputManager.clearBuffer();  // Rï¿½initialiser le buffer
+        inputManager.getInput();
+        entityManager.updateAll();
+        /outputManager.drawBuffer();  // Afficher le buffer sur la console
 
         Sleep(100);  // Pause pour ralentir l'affichage
     }

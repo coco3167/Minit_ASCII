@@ -6,12 +6,12 @@
 
 class Entity
 {
-
 public:
     // Getter
     Vector2 getPosition() const;
     bool isHidden() const;
     std::vector<std::string> getSprite() const;
+    virtual void update();
 
     // Setter
     void setSprite(const std::vector<std::string>& sprite);

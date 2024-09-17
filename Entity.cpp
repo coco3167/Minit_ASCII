@@ -1,5 +1,8 @@
 ﻿#include "Entity.h"
 
+#include <iostream>
+#include <ostream>
+
 /*
 ====================
 Getter
@@ -19,6 +22,11 @@ bool Entity::isHidden() const
 std::vector<std::string> Entity::getSprite() const
 {
     return sprite;
+}
+
+void Entity::update()
+{
+    //std::cout << "Entity::update()";
 }
 
 /*

@@ -15,9 +15,10 @@ InputManager::InputManager(Player* player)
     this->player = player;
 }
 
-void InputManager::GetInput()
+void InputManager::getInput()
 {
     int movement = 0;
+    
     //Movement
     if(GetAsyncKeyState(VK_UP) || GetAsyncKeyState(Z))
     {
