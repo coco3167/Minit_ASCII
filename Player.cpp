@@ -1,7 +1,7 @@
 ﻿#include "Player.h"
 #include "Direction.h"
 
-int Player::getKey()
+int Player::getKey() const
 {
     return key;
 }

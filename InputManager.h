@@ -9,5 +9,5 @@ private:
     
 public:
     InputManager(Player* player);
-    void GetInput();
+    void GetInput() const;
 };

@@ -10,12 +10,12 @@ Getter
 ====================
 */
 
-int Character::getLife()
+int Character::getLife() const
 {
     return life;
 }
 
-void Character::move(int direction)
+void Character::move(int direction) const
 {
     if (canMove(direction))
     {
@@ -23,7 +23,7 @@ void Character::move(int direction)
     }
 }
 
-bool Character::canMove(int direction)
+bool Character::canMove(int direction) const
 {
     if (direction == LEFT)
     {
