@@ -18,7 +18,6 @@ InputManager::InputManager(Player* player)
 void InputManager::getInput() const
 {
     int movement = 0;
-    
     //Movement
     if(GetAsyncKeyState(VK_UP) || GetAsyncKeyState(Z))
     {

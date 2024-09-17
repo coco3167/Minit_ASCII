@@ -47,8 +47,8 @@ void OutputManager::setFixedConsoleSize(int width, int height)
     // 3. Disable window manual resizing
     HWND hwndConsole = GetConsoleWindow();
     LONG style = GetWindowLong(hwndConsole, GWL_STYLE);
-    style &= ~WS_SIZEBOX;  // Désactiver le redimensionnement
-    style &= ~WS_MAXIMIZEBOX;  // Désactiver le bouton maximiser
+    style &= ~WS_SIZEBOX;  // Dï¿½sactiver le redimensionnement
+    style &= ~WS_MAXIMIZEBOX;  // Dï¿½sactiver le bouton maximiser
     SetWindowLong(hwndConsole, GWL_STYLE, style);
 
     // 4. Calculate window position to center in screen
