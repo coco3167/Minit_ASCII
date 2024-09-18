@@ -19,7 +19,7 @@ Vector2 Entity::getPosition() const { return {getHitbox().x,getHitbox().y}; }
 
 bool Entity::isHidden() const { return hidden; }
 
-const Sprite& Entity::getSprite() const { return sprite; }
+Sprite const& Entity::getSprite() const { return sprite; }
 
 Hitbox Entity::getHitbox() const { return hitbox; }
 
