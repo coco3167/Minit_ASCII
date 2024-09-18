@@ -1,6 +1,5 @@
 #pragma once
 
-#include <iostream>
 #include "Buffer.h"
 #include "Entity.h"
 
@@ -13,7 +12,6 @@ public:
     void clearBuffer();
     void drawBuffer();
     void maximizeConsoleWindow();
-    void setFixedConsoleSize(int width, int height);
-
+    void setFixedConsoleSize(SHORT width, SHORT height);
     void display(Entity const& entity);
 };

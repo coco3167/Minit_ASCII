@@ -16,9 +16,9 @@ int Player::getKey() const
     return key;
 }
 
-void Player::setKey(int key)
+void Player::setKey(int newKey)
 {
-    this->key = key;
+    this->key = newKey;
 }
 
 void Player::update(EntityManager const& entity_manager)

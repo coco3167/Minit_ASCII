@@ -25,5 +25,4 @@ public:
 private:
     int life = 1;
     int direction = 0;
-    
 };

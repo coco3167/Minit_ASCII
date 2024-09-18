@@ -8,12 +8,12 @@ Buffer::Buffer():
     writeRegion = {0, 0, WIDTH - 1, HEIGHT - 1};
 }
 
-COORD Buffer::getSize()
+COORD Buffer::getSize() const
 {
     return size;
 }
 
-COORD Buffer::getCoord()
+COORD Buffer::getCoord() const
 {
     return coord;
 }

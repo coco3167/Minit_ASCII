@@ -22,11 +22,11 @@ void OutputManager::drawBuffer()
 void OutputManager::maximizeConsoleWindow()
 {
     HWND hWnd = GetConsoleWindow();  // Get console window
-    if (hWnd != NULL)
+    if (hWnd != nullptr)
         ShowWindow(hWnd, SW_MAXIMIZE);  // Maximise the window
 }
 
-void OutputManager::setFixedConsoleSize(int width, int height)
+void OutputManager::setFixedConsoleSize(SHORT width, SHORT height)
 {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -40,8 +40,8 @@ void OutputManager::setFixedConsoleSize(int width, int height)
     SMALL_RECT windowSize;
     windowSize.Left = 0;
     windowSize.Top = 0;
-    windowSize.Right = width - 1;
-    windowSize.Bottom = height - 1;
+    windowSize.Right = static_cast<SHORT>(width - 1);
+    windowSize.Bottom = static_cast<SHORT>(height - 1);
     SetConsoleWindowInfo(hConsole, TRUE, &windowSize);
 
     // 3. Disable window manual resizing
@@ -67,7 +67,7 @@ void OutputManager::setFixedConsoleSize(int width, int height)
     int posX = (screenWidth - consoleWidthInPixels) / 2;
     int posY = (screenHeight - consoleHeightInPixels) / 2;
 
-    // 5. Move window to it's new pos
+    // 5. Move window to its new pos
     MoveWindow(hwndConsole, posX, posY, consoleWidthInPixels, consoleHeightInPixels, TRUE);
 }
 

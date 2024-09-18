@@ -13,11 +13,16 @@ private:
 	SMALL_RECT writeRegion;
 public:
 	Buffer();
-	COORD getSize();
-	COORD getCoord();
+
+	// const getter
+	COORD getSize() const;
+	COORD getCoord() const;
+
+	// non-const getter
 	SMALL_RECT* getWriteRegion();
 	std::vector<CHAR_INFO>& getScreenBuffer();
 	CHAR_INFO* getRawData();
+	
 	CHAR_INFO& at(int x, int y);
 };
 
