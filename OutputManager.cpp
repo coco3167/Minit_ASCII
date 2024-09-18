@@ -5,8 +5,8 @@ void OutputManager::clearBuffer()
 {
     for (int i = 0; i < WIDTH*HEIGHT; ++i)
     {
-        buffer.getScreenBuffer()[i].Char.AsciiChar = '0';  // Empty space
-        buffer.getScreenBuffer()[i].Attributes = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE;  // White color
+        buffer.getScreenBuffer()[i].Char.UnicodeChar = 0x2588;  // Empty space
+        buffer.getScreenBuffer()[i].Attributes = 0;  // black color
     }
 }
 
