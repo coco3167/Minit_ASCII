@@ -1,6 +1,8 @@
 ﻿#include "EntityManager.h"
 #include "Direction.h"
 #include "Hitbox.h"
+#include "InteractableEntity.h"
+#include "Player.h"
 
 void EntityManager::updateAll()
 {
@@ -40,11 +42,20 @@ bool EntityManager::willCollide(Character* character) const
     // test collision with others entity
     for (auto it = entities.begin(); it != entities.end(); it++)
     {
-        if ((*it).get() != character)
-            if (hitbox.isColliding((*it)->getHitbox()))
+        Entity* entity = (*it).get();
+        if (entity != character)
+            if (hitbox.isColliding(entity->getHitbox()))
             {
                 // Collide
                 character->setDirection(0);
+
+                // Try interaction on colliding entity
+                InteractableEntity* interactable = dynamic_cast<InteractableEntity*>(entity);
+                if(interactable != nullptr)
+                {
+                    interactable->onInteract(character);
+                }
+                
                 return true;
             }
     }
