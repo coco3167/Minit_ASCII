@@ -67,8 +67,8 @@ bool EntityManager::willCollideHorizontal(Character* character) const
     int dir = character->getDirection();
 
     // In which direction we would go
-    if ((dir & LEFT) == LEFT) { characterActualPosition.x -= 1; }
-    if ((dir & RIGHT) == RIGHT) { characterActualPosition.x += 1; }
+    if ((dir & LEFT) == LEFT) { characterActualPosition.x -= 2; }
+    if ((dir & RIGHT) == RIGHT) { characterActualPosition.x += 2; }
    
     // Test we don't exit box
     if (characterActualPosition.x < 0) { return true; }

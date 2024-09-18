@@ -44,10 +44,10 @@ void Character::moveHorizontal()
         return;
     
     if ((direction & LEFT) == LEFT)
-        setPosition({getPosition().x - 1, getPosition().y});
+        setPosition({getPosition().x - 2, getPosition().y});
     
     if ((direction & RIGHT) == RIGHT)    
-        setPosition({getPosition().x + 1, getPosition().y});
+        setPosition({getPosition().x + 2, getPosition().y});
 }
 
 void Character::receiveDamage(int damage)
