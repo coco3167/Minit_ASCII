@@ -19,7 +19,7 @@ bool Entity::isHidden() const
     return hidden;
 }
 
-std::vector<std::string> Entity::getSprite() const
+Sprite Entity::getSprite() const
 {
     return sprite;
 }
@@ -35,7 +35,7 @@ Setter
 ====================
 */
 
-void Entity::setSprite(const std::vector<std::string>& sprite)
+void Entity::setSprite(const Sprite& sprite)
 {
     this->sprite = sprite;
 }
