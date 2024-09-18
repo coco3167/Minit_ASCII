@@ -15,29 +15,29 @@ int Character::getLife() const
     return life;
 }
 
-void Character::move() const
+void Character::move()
 {
     if(direction == 0)
         return;
     
     if (direction == LEFT)
     {
-        //TEST COLLISION WITH LEFT
+        setPosition({getPosition().x - 1, getPosition().y});
     }
 
     if (direction == RIGHT)
     {
-        //TEST COLLISION WITH RIGHT
+        setPosition({getPosition().x + 1, getPosition().y});
     }
 
     if (direction == UP)
     {
-        //TEST COLLISION WITH UP
+        setPosition({getPosition().x , getPosition().y - 1});
     }
 
     if (direction == DOWN)
     {
-        //TEST COLLISION WITH DOWN
+        setPosition({getPosition().x , getPosition().y + 1});
     }
 }
 
@@ -55,10 +55,11 @@ bool Character::checkIsDead() const
     return life <= 0;
 }
 
-void Character::update()
+void Character::update(EntityManager const& entity_manager)
 {
-    Entity::update();
-    move();
+    Entity::update(entity_manager);
+    if (! entity_manager.willCollide(this))
+        move();
 }
 
 void Character::setDirection(int direction)

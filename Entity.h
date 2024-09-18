@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include <string>
 #include <vector>
+
+#include "EntityManager.h"
 #include "Vector2.h"
 #include "Hitbox.h"
 
@@ -14,7 +16,7 @@ public:
     Vector2 getPosition() const;
     bool isHidden() const;
     Sprite getSprite() const;
-    virtual void update();
+    virtual void update(EntityManager const& entity_manager);
     Hitbox getHitbox() const;
 
     // Setter

@@ -6,7 +6,7 @@
 void EntityManager::updateAll()
 {
     for (Entity* entity : entities)
-        entity->update();
+        entity->update(this);
 }
 
 void EntityManager::addEntity(Entity* entity)
@@ -19,7 +19,7 @@ void EntityManager::destroyEntity(Entity* entity)
     entities.erase(entity);
 }
 
-bool EntityManager::willCollide(Character* character)
+bool EntityManager::willCollide(Character* character) const
 {
     Vector2 characterActualPosition = character->getPosition();
     int dir = character->getDirection();
@@ -54,7 +54,11 @@ bool EntityManager::willCollide(Character* character)
         if (entity != character)
         {
             if (character->getHitbox().isColliding(entity->getHitbox()))
+            {
+                // Collide
+                character->setDirection(0);
                 return true;
+            }
         }
     }
     return false;

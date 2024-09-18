@@ -30,7 +30,7 @@ Sprite Entity::getSprite() const
     return sprite;
 }
 
-void Entity::update()
+void Entity::update(EntityManager const& entity_manager)
 {
     //std::cout << "Entity::update()";
 }
