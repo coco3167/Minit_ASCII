@@ -39,10 +39,7 @@ void InputManager::getInput() const
         movement |= RIGHT;
     }
 
-    if(movement != 0)
-    {
-        player->move(movement);
-    }
+    player->setDirection(movement);
         
     //Menuing
     if(GetAsyncKeyState(VK_ESCAPE))

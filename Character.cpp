@@ -15,15 +15,18 @@ int Character::getLife() const
     return life;
 }
 
-void Character::move(int direction) const
+void Character::move() const
 {
-    if (canMove(direction))
+    if(direction == 0)
+        return;
+    
+    if (canMove())
     {
         std::cout << direction << "\n";
     }
 }
 
-bool Character::canMove(int direction) const
+bool Character::canMove() const
 {
     if (direction == LEFT)
     {
@@ -46,5 +49,10 @@ bool Character::canMove(int direction) const
     }
 
     return true;
+}
+
+void Character::setDirection(int direction)
+{
+    this->direction = direction;
 }
 
