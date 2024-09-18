@@ -15,7 +15,7 @@ public:
     Entity(int x, int y, int w, int h, Sprite sprite);
     
     // Getter
-    Vector2 const& getPosition() const;
+    Vector2 getPosition() const;
     Hitbox getHitbox() const;
     bool isHidden() const;
     Sprite const& getSprite() const;

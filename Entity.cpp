@@ -15,7 +15,7 @@ Entity::Entity(int x, int y, int w, int h, Sprite sprite):
 Getter
 ====================
 */
-Vector2 const& Entity::getPosition() const { return {getHitbox().x,getHitbox().y}; }
+Vector2 Entity::getPosition() const { return {getHitbox().x,getHitbox().y}; }
 
 bool Entity::isHidden() const { return hidden; }
 
