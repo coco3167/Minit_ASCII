@@ -4,6 +4,8 @@
 class Character: public Entity
 {
 public:
+    using Entity::Entity;
+
     // Getter
     int getLife() const;
     int getDirection() const;

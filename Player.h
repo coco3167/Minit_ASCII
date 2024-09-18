@@ -4,7 +4,7 @@
 class Player : public Character
 {
 public:
-    Player(int x, int y, int w, int h, Sprite sprite);
+    using Character::Character;
     Player(int x, int y, int w, int h);
     int getKey() const;
     void setKey(int key);
