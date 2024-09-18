@@ -35,5 +35,9 @@ CHAR_INFO * Buffer::getRawData()
 
 CHAR_INFO& Buffer::at(int x, int y)
 {
-    return screenBuffer[x * WIDTH + y];
+    if (x < 0) x = 0;
+    if (x > WIDTH-1) x = WIDTH-1;
+    if (y < 0) y = 0;
+    if (y > HEIGHT-1) y = HEIGHT-1;
+    return screenBuffer[y * WIDTH + x];
 }

@@ -5,7 +5,7 @@ class Player : public Character
 {
 public:
     using Character::Character;
-    Player(int x, int y, int w, int h);
+    Player(int x, int y);
     int getKey() const;
     void setKey(int key);
     
