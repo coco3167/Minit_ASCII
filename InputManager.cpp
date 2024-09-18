@@ -22,26 +22,31 @@ void InputManager::getInput() const
     if(GetAsyncKeyState(VK_UP) || GetAsyncKeyState(Z))
     {
         movement |= UP;
+        std::cout << "UP" << std::endl;
     }
 
     if(GetAsyncKeyState(VK_DOWN) || GetAsyncKeyState(S))
     {
         movement |= DOWN;
+        std::cout << "DOWN" << std::endl;
     }
     
     if(GetAsyncKeyState(VK_LEFT) || GetAsyncKeyState(Q))
     {
         movement |= LEFT;
+        std::cout << "LEFT" << std::endl;
     }
 
     if(GetAsyncKeyState(VK_RIGHT) || GetAsyncKeyState(D))
     {
         movement |= RIGHT;
+        std::cout << "RIGHT" << std::endl;
     }
 
     if(movement != 0)
     {
-        player->move(movement);
+        //player->move(movement);
+        //std::cout << "movement" << std::endl;
     }
         
     //Menuing

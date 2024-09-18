@@ -10,3 +10,8 @@ void Player::setKey(int key)
 {
     this->key = key;
 }
+
+void Player::update()
+{
+    Character::update();
+}
