@@ -13,7 +13,8 @@ public:
     // Setter
     void setDirection(int direction);
     
-    void move();
+    void moveHorizontal();
+    void moveVertical();
     void attack(int damage) const;
     void receiveDamage(int damage);
     bool checkIsDead() const;
@@ -25,4 +26,5 @@ public:
 private:
     int life = 1;
     int direction = 0;
+    bool dead = false;
 };

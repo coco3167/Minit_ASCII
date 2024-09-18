@@ -37,7 +37,8 @@ void Entity::setSprite(const Sprite& sprite)
 
 void Entity::setPosition(const Vector2& position)
 {
-    setHitbox(position.x, position.y, getHitbox().w, getHitbox().h);
+    hitbox.x = position.x;
+    hitbox.y = position.y;
 }
 
 void Entity::setHidden(bool hidden) { this->hidden = hidden; }

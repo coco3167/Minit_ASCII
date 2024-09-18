@@ -24,8 +24,8 @@ void Player::setKey(int newKey)
 void Player::update(EntityManager const& entity_manager)
 {
     Character::update(entity_manager);
-    if (dead)
-        DeathEvent(entity_manager);
+    /*if (dead)
+        DeathEvent(entity_manager);*/
 }
 
 void Player::DeathEvent(EntityManager const& entity_manager)

@@ -13,6 +13,7 @@ public:
     void updateAll();
     void addEntity(Entity* entity);
     void destroyEntity(Entity* entity);
-    bool willCollide(Character* character) const;
+    bool willCollideVertical(Character* character) const;
+    bool willCollideHorizontal(Character* character) const;
     
 };

@@ -14,5 +14,4 @@ public:
 
 private:
     int key = 0;
-    bool dead = false;
 };
