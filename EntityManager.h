@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <unordered_set>
+#include <memory>
 
 #include "Character.h"
 #include "Entity.h"
@@ -7,7 +8,7 @@
 class EntityManager
 {
 private:
-    std::unordered_set<Entity*> entities;
+    std::unordered_set<std::unique_ptr<Entity>> entities;
 
 public:
     void updateAll();
