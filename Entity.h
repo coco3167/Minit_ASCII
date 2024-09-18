@@ -4,7 +4,7 @@
 #include "Vector2.h"
 #include "Hitbox.h"
 
-typedef std::vector<std::string> Sprite;
+typedef std::vector<std::wstring> Sprite;
 
 class Entity
 {

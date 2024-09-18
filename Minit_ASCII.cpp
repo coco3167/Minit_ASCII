@@ -6,7 +6,15 @@ int main()
 {
     OutputManager outputManager;
     outputManager.setFixedConsoleSize(WIDTH, HEIGHT);
-    Player player = Player();
+    Sprite sprite =
+    {
+        { 0x2588, 0x2588, 0x2588, 0x2588, 0x2588 },
+        { 0x2588, 0x2588, 0x2588, 0x2588, 0x2588 },
+        { 0x2588, 0x2588, 0x2588, 0x2588, 0x2588 },
+        { 0x2588, 0x2588, 0x2588, 0x2588, 0x2588 },
+        { 0x2588, 0x2588, 0x2588, 0x2588, 0x2588 }
+    };
+    Player player(0,0,5,5,sprite);
     InputManager inputManager = InputManager(&player);
     EntityManager entityManager = EntityManager();
 
