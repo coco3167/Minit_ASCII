@@ -1,6 +1,4 @@
 ﻿#include "Player.h"
-#include "Direction.h"
-
 
 Player::Player(int x, int y, int w, int h):
     Character(x,y,w,h,
@@ -26,4 +24,12 @@ void Player::setKey(int key)
 void Player::update(EntityManager const& entity_manager)
 {
     Character::update(entity_manager);
+    if (dead)
+        DeathEvent(entity_manager);
+}
+
+void Player::DeathEvent(EntityManager const& entity_manager)
+{
+    Character::DeathEvent(entity_manager);
+    setPosition({0, 0});
 }

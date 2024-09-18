@@ -32,24 +32,16 @@ void Character::move()
         return;
     
     if ((direction & LEFT) == LEFT)
-    {
         setPosition({getPosition().x - 1, getPosition().y});
-    }
-
-    if ((direction & RIGHT) == RIGHT)
-    {
+    
+    if ((direction & RIGHT) == RIGHT)    
         setPosition({getPosition().x + 1, getPosition().y});
-    }
 
     if ((direction & UP) == UP)
-    {
         setPosition({getPosition().x , getPosition().y - 1});
-    }
 
     if ((direction & DOWN) == DOWN)
-    {
         setPosition({getPosition().x , getPosition().y + 1});
-    }
 }
 
 void Character::receiveDamage(int damage)
@@ -68,4 +60,8 @@ void Character::update(EntityManager const& entity_manager)
     Entity::update(entity_manager);
     if (! entity_manager.willCollide(this))
         move();
+}
+
+void Character::DeathEvent(EntityManager const& entity_manager)
+{
 }

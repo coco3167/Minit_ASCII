@@ -25,42 +25,28 @@ bool EntityManager::willCollide(Character* character) const
     Vector2 characterActualPosition = character->getPosition();
     int dir = character->getDirection();
    
-    if ((dir & LEFT) == LEFT)
-    {
-        //want to move left
-        characterActualPosition.x -= 1;
-    }
+    if ((dir & LEFT) == LEFT) { characterActualPosition.x -= 1; }
 
-    if ((dir & RIGHT) == RIGHT)
-    {
-        //want to move right
-        characterActualPosition.x += 1;
-    }
+    if ((dir & RIGHT) == RIGHT) { characterActualPosition.x += 1; }
 
-    if ((dir & UP) == UP)
-    {
-        //want to move up
-        characterActualPosition.y -= 1;
-    }
+    if ((dir & UP) == UP) { characterActualPosition.y -= 1; }
 
-    if ((dir & DOWN) == DOWN)
-    {
-        //want to move down
-        characterActualPosition.y += 1;
-    }
+    if ((dir & DOWN) == DOWN) { characterActualPosition.y += 1; }
 
+    Hitbox hitbox = (character->getHitbox());
+    hitbox.x = characterActualPosition.x;
+    hitbox.y = characterActualPosition.y;
+    
     // test collision with others entity
     for (auto it = entities.begin(); it != entities.end(); it++)
     {
         if ((*it).get() != character)
-        {
-            if (character->getHitbox().isColliding((*it)->getHitbox()))
+            if (hitbox.isColliding((*it)->getHitbox()))
             {
                 // Collide
                 character->setDirection(0);
                 return true;
             }
-        }
     }
     return false;
 }

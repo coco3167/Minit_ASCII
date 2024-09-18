@@ -19,6 +19,8 @@ public:
     bool checkIsDead() const;
     void update(EntityManager const& entity_manager) override;
 
+    virtual void DeathEvent(EntityManager const& entity_manager);
+
     
 private:
     int life = 1;

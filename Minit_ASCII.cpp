@@ -7,10 +7,12 @@ int main()
     OutputManager outputManager;
     outputManager.setFixedConsoleSize(WIDTH, HEIGHT);
     Player player(0,0,5,5);
+    Player player2(6,6,5,5);
     InputManager inputManager = InputManager(&player);
     EntityManager entityManager = EntityManager();
 
     entityManager.addEntity(&player);
+    entityManager.addEntity(&player2);
 
     while (true)
     {
@@ -19,6 +21,7 @@ int main()
         entityManager.updateAll();
 
         outputManager.display(player);
+        outputManager.display(player2);
         outputManager.drawBuffer(); //Blit buffer on screen
 
         Sleep(100); //Let the CPU breath
