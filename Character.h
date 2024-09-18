@@ -8,10 +8,12 @@ public:
 
 private:
     int life = 1;
+    int direction = 0;
 
 public:
-    void move(int direction) const;
-    bool canMove(int direction) const;
+    void move() const;
+    bool canMove() const;
+    void setDirection(int direction);
     void attack(int damage) const;
     void receiveDamage(int damage) const;
 };
