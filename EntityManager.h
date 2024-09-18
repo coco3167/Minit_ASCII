@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <unordered_set>
 
+#include "Character.h"
 #include "Entity.h"
 
 class EntityManager
@@ -12,5 +13,6 @@ public:
     void updateAll();
     void addEntity(Entity* entity);
     void destroyEntity(Entity* entity);
+    bool willCollide(Character* entity);
     
 };

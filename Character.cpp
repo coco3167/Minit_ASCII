@@ -20,14 +20,6 @@ void Character::move() const
     if(direction == 0)
         return;
     
-    if (canMove())
-    {
-        std::cout << direction << "\n";
-    }
-}
-
-bool Character::canMove() const
-{
     if (direction == LEFT)
     {
         //TEST COLLISION WITH LEFT
@@ -47,8 +39,24 @@ bool Character::canMove() const
     {
         //TEST COLLISION WITH DOWN
     }
+    
+}
 
-    return true;
+void Character::receiveDamage(int damage)
+{
+    life -= damage;
+    checkIsDead();
+}
+
+bool Character::checkIsDead() const
+{
+    return life <= 0;
+}
+
+void Character::update()
+{
+    Entity::update();
+    move();
 }
 
 void Character::setDirection(int direction)

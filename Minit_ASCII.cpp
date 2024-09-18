@@ -12,7 +12,8 @@ int main()
 
     entityManager.addEntity(&player);
 
-    while (true) {
+    while (true)
+    {
         outputManager.clearBuffer();  // R�initialiser le buffer
         inputManager.getInput();
         entityManager.updateAll();

@@ -12,8 +12,9 @@ private:
 
 public:
     void move() const;
-    bool canMove() const;
     void setDirection(int direction);
     void attack(int damage) const;
-    void receiveDamage(int damage) const;
+    void receiveDamage(int damage);
+    bool checkIsDead() const;
+    void update() override;
 };

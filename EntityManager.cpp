@@ -15,3 +15,10 @@ void EntityManager::destroyEntity(Entity* entity)
 {
     entities.erase(entity);
 }
+
+bool EntityManager::willCollide(Character* character)
+{
+    Vector2 characterActualPosition = character->getPosition();
+    switch (character->getDirection()) {  }
+    
+}
