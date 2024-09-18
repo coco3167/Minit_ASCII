@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "Buffer.h"
+#include "Entity.h"
 
 
 class OutputManager
@@ -13,4 +14,6 @@ public:
     void drawBuffer();
     void maximizeConsoleWindow();
     void setFixedConsoleSize(int width, int height);
+
+    void display(Entity const& entity);
 };

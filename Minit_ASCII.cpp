@@ -17,6 +17,8 @@ int main()
         outputManager.clearBuffer(); //Reset buffer
         inputManager.getInput();
         entityManager.updateAll();
+
+        outputManager.display(player);
         outputManager.drawBuffer(); //Blit buffer on screen
 
         Sleep(100); //Let the CPU breath

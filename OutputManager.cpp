@@ -70,3 +70,17 @@ void OutputManager::setFixedConsoleSize(int width, int height)
     // 5. Move window to it's new pos
     MoveWindow(hwndConsole, posX, posY, consoleWidthInPixels, consoleHeightInPixels, TRUE);
 }
+
+void OutputManager::display(Entity const& entity)
+{
+    Sprite const& sprite = entity.getSprite();
+    Vector2 pos = entity.getPosition();
+    for (int i = 0; i < sprite.size(); i++)
+    {
+        for (int j = 0; j < sprite[i].size(); j++)
+        {
+            buffer.at(pos.x + i, pos.y + j).Char.UnicodeChar = sprite[i][j];
+            buffer.at(pos.x + i, pos.y + j).Attributes = FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED;
+        }
+    }
+}
