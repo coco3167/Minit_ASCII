@@ -2,6 +2,13 @@
 #include "Direction.h"
 
 
+Player::Player(int x, int y, int w, int h, Sprite sprite)
+{
+    setSprite(sprite);
+    setPosition({x, y});
+    
+}
+
 int Player::getKey() const
 {
     return key;

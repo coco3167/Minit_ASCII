@@ -13,20 +13,22 @@ class Entity
 {
 public:
     Entity(int x, int y, int w, int h, Sprite sprite);
+    
     // Getter
     Vector2 getPosition() const;
+    Hitbox getHitbox() const;
     bool isHidden() const;
     Sprite getSprite() const;
-    virtual void update(EntityManager const& entity_manager);
-    Hitbox getHitbox() const;
 
     // Setter
     void setSprite(const Sprite& sprite);
     void setPosition(const Vector2& position);
     void setHidden(bool hidden);
+    void setHitbox(int x, int y, int w, int h);
+    
+    virtual void update(EntityManager const& entity_manager);
     
 private:
-    Vector2 position;
     bool hidden;
     Sprite sprite;
     Hitbox hitbox;
