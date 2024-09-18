@@ -11,11 +11,11 @@ private:
     int direction = 0;
 
 public:
-    void move() const;
+    void move();
     void setDirection(int direction);
     int getDirection() const;
     void attack(int damage) const;
     void receiveDamage(int damage);
     bool checkIsDead() const;
-    void update() override;
+    void update(EntityManager const& entity_manager) override;
 };
