@@ -3,7 +3,6 @@
 #include <memory>
 
 #include "Character.h"
-#include "Entity.h"
 
 class EntityManager
 {

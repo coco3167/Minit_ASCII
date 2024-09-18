@@ -10,7 +10,7 @@ void EntityManager::updateAll()
 
 void EntityManager::addEntity(Entity* entity)
 {
-    entities.insert(std::make_unique<Entity>(entity));
+    entities.insert(std::unique_ptr<Entity>(entity));
 }
 
 void EntityManager::destroyEntity(Entity* entity)

@@ -1,4 +1,5 @@
 ﻿#include "Character.h"
+#include "EntityManager.h"
 
 #include <iostream>
 

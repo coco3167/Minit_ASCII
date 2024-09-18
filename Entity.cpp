@@ -1,4 +1,5 @@
 ﻿#include "Entity.h"
+#include "EntityManager.h"
 
 #include <iostream>
 #include <ostream>

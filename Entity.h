@@ -2,9 +2,10 @@
 #include <string>
 #include <vector>
 
-#include "EntityManager.h"
 #include "Vector2.h"
 #include "Hitbox.h"
+
+class EntityManager;
 
 typedef std::vector<std::wstring> Sprite;
 
