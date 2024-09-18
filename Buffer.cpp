@@ -32,3 +32,8 @@ CHAR_INFO * Buffer::getRawData()
 {
     return screenBuffer.data();
 }
+
+CHAR_INFO& Buffer::at(int x, int y)
+{
+    return screenBuffer[x * WIDTH + y];
+}

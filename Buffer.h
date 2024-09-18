@@ -18,5 +18,6 @@ public:
 	SMALL_RECT* getWriteRegion();
 	std::vector<CHAR_INFO>& getScreenBuffer();
 	CHAR_INFO* getRawData();
+	CHAR_INFO& at(int x, int y);
 };
 
