@@ -3,10 +3,14 @@
 
 void OutputManager::clearBuffer()
 {
-    for (int i = 0; i < WIDTH*HEIGHT; ++i)
+    for (int i = 0; i < HEIGHT; ++i)
     {
-        buffer.getScreenBuffer()[i].Char.UnicodeChar = 0x2588;  // Empty space
-        buffer.getScreenBuffer()[i].Attributes = 0;  // black color
+        for (int j = 0; j < WIDTH; j++)
+        {
+        buffer.getScreenBuffer()[i*WIDTH + j].Char.UnicodeChar = 0x2588;  // Empty space
+        buffer.getScreenBuffer()[i*WIDTH + j].Attributes = 0;  // black color
+        }
+        
     }
 }
 

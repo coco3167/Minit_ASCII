@@ -6,8 +6,8 @@ int main()
 {
     OutputManager outputManager;
     outputManager.setFixedConsoleSize(WIDTH, HEIGHT);
-    Player player(0,0,5,5);
-    Player player2(6,6,5,5);
+    Player player(0,0);
+    Player player2(6,6);
     InputManager inputManager = InputManager(&player);
     EntityManager entityManager = EntityManager();
 

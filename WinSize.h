@@ -1,5 +1,5 @@
 #pragma once
 
 //width and height of the window in characters
-constexpr SHORT WIDTH = 140;
-constexpr SHORT HEIGHT = 40;
+constexpr int WIDTH = 140;
+constexpr int HEIGHT = 50;
