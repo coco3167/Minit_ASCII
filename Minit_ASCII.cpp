@@ -14,12 +14,12 @@ int main()
 
     while (true)
     {
-        outputManager.clearBuffer();  // R�initialiser le buffer
+        outputManager.clearBuffer(); //Reset buffer
         inputManager.getInput();
         entityManager.updateAll();
-        outputManager.drawBuffer();  // Afficher le buffer sur la console
+        outputManager.drawBuffer(); //Blit buffer on screen
 
-        Sleep(100);  // Pause pour ralentir l'affichage
+        Sleep(100); //Let the CPU breath
     }
     return 0;
 }
