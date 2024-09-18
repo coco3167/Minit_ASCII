@@ -18,7 +18,7 @@ public:
     Vector2 getPosition() const;
     Hitbox getHitbox() const;
     bool isHidden() const;
-    Sprite getSprite() const;
+    const Sprite& getSprite() const;
 
     // Setter
     void setSprite(const Sprite& sprite);
