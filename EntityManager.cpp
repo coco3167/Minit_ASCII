@@ -6,7 +6,7 @@
 void EntityManager::updateAll()
 {
     for (Entity* entity : entities)
-        entity->update(this);
+        entity->update(*this);
 }
 
 void EntityManager::addEntity(Entity* entity)
