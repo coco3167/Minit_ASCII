@@ -13,6 +13,6 @@ public:
     void updateAll();
     void addEntity(Entity* entity);
     void destroyEntity(Entity* entity);
-    bool willCollide(Character* entity);
+    bool willCollide(Character* character);
     
 };

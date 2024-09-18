@@ -15,6 +15,7 @@ public:
     bool isHidden() const;
     Sprite getSprite() const;
     virtual void update();
+    Hitbox getHitbox() const;
 
     // Setter
     void setSprite(const Sprite& sprite);

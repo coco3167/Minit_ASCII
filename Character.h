@@ -13,6 +13,7 @@ private:
 public:
     void move() const;
     void setDirection(int direction);
+    int getDirection() const;
     void attack(int damage) const;
     void receiveDamage(int damage);
     bool checkIsDead() const;

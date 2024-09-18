@@ -39,13 +39,15 @@ void Character::move() const
     {
         //TEST COLLISION WITH DOWN
     }
-    
 }
 
 void Character::receiveDamage(int damage)
 {
     life -= damage;
-    checkIsDead();
+    if (checkIsDead())
+    {
+        // DeathEvent
+    }
 }
 
 bool Character::checkIsDead() const
@@ -62,5 +64,10 @@ void Character::update()
 void Character::setDirection(int direction)
 {
     this->direction = direction;
+}
+
+int Character::getDirection() const
+{
+    return direction;
 }
 

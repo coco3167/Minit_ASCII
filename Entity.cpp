@@ -35,6 +35,11 @@ void Entity::update()
     //std::cout << "Entity::update()";
 }
 
+Hitbox Entity::getHitbox() const
+{
+    return hitbox;
+}
+
 /*
 ====================
 Setter
