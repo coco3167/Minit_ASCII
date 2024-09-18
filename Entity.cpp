@@ -9,6 +9,12 @@ Getter
 ====================
 */
 
+Entity::Entity(int x, int y, int w, int h, Sprite sprite):
+    hitbox{x,y,w,h},
+    sprite{sprite}
+{
+}
+
 Vector2 Entity::getPosition() const
 {
     return position;

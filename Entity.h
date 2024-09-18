@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include "Vector2.h"
+#include "Hitbox.h"
 
 typedef std::vector<std::string> Sprite;
 
@@ -24,5 +25,5 @@ private:
     Vector2 position;
     bool hidden;
     Sprite sprite;
-    
+    Hitbox hitbox;
 };
