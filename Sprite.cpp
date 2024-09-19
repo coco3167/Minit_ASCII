@@ -15,8 +15,18 @@ Sprite::Sprite(std::string ressourcePath)
         return;
     }
     std::wstring line;
+    std::vector<std::wstring> buffer;
     while (std::getline(file, line))
-        data.push_back(line);
+        buffer.push_back(line);
+
+    for (int i = 0; i < buffer[0].size(); i++)
+    {
+        data.emplace_back();
+        for (int j = 0; j < buffer.size(); j++)
+        {
+            data[i] += buffer[j][i];
+        }
+    }
 
     file.close();
 }
