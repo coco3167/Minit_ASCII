@@ -7,8 +7,8 @@ void OutputManager::clearBuffer()
     {
         for (int j = 0; j < WIDTH; j++)
         {
-        buffer.getScreenBuffer()[i*WIDTH + j].Char.UnicodeChar = 0x2588;  // Empty space
-        buffer.getScreenBuffer()[i*WIDTH + j].Attributes = 0;  // black color
+            buffer.getScreenBuffer()[i*WIDTH + j].Char.UnicodeChar = 0x2588;  // Full block
+            buffer.getScreenBuffer()[i*WIDTH + j].Attributes = 0;  // black color
         }
         
     }
