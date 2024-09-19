@@ -1,14 +1,14 @@
 ﻿#pragma once
-#include <string>
-#include <vector>
 
 #include "Vector2.h"
 #include "Hitbox.h"
+#include "Sprite.h"
 
 class EntityManager;
 
-typedef std::vector<std::wstring> Sprite;
-
+/// <summary>
+/// This class represent every single thing in the game that has a sprite and a hitbox.
+/// </summary>
 class Entity
 {
 public:
