@@ -1,7 +1,7 @@
 ﻿#include "Player.h"
 
 Player::Player(int x, int y):
-    Character(x, y, 6, 3, Sprite("player.txt"))
+    Character(x, y, Sprite("player.txt"))
 {}
 
 int Player::getKey() const

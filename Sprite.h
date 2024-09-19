@@ -10,5 +10,7 @@ public:
 	Sprite(std::string ressourcePath);
 	std::wstring const& operator[](int key) const;
 	int size() const;
+	int getWidth() const;
+	int getHeight() const;
 };
 

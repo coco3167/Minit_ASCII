@@ -13,6 +13,7 @@ class Entity
 {
 public:
     Entity(int x, int y, int w, int h, Sprite sprite);
+    Entity(int x, int y, Sprite sprite);
     
     // Getter
     Vector2 getPosition() const;

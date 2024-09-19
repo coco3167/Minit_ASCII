@@ -10,6 +10,11 @@ Entity::Entity(int x, int y, int w, int h, Sprite sprite):
 {
 }
 
+Entity::Entity(int x, int y, Sprite sprite):
+    Entity{x,y,sprite.getWidth(),sprite.getHeight(), sprite}
+{
+}
+
 /*
 ====================
 Getter

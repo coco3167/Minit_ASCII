@@ -40,3 +40,13 @@ int Sprite::size() const
 {
     return data.size();
 }
+
+int Sprite::getWidth() const
+{
+    return size();
+}
+
+int Sprite::getHeight() const
+{
+    return data[0].size();
+}
