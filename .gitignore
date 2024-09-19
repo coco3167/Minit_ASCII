@@ -473,3 +473,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml   
+
+# Debug file
+DEBUG.txt
