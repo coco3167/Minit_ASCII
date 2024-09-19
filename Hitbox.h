@@ -3,7 +3,7 @@
 
 struct Hitbox
 {
-    int x,y, h, w;
+    int x,y, w, h;
     bool isColliding(Hitbox other) const
     {
         if((other.x >= x + w)      // trop à droite
