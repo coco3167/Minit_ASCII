@@ -23,14 +23,14 @@ void EntityManager::destroyEntity(Entity* entity)
             entities.erase(it);
 }
 
-bool EntityManager::willCollideVertical(Character* character) const
+int EntityManager::willCollideVertical(Character* character, int verticalSpeed) const
 {
     Vector2 characterActualPosition = character->getPosition();
     int dir = character->getDirection();
 
     // In which direction we would go vertically
-    if ((dir & UP) == UP) { characterActualPosition.y -= 1; }
-    if ((dir & DOWN) == DOWN) { characterActualPosition.y += 1; }
+    if ((dir & UP) == UP) { characterActualPosition.y -= verticalSpeed; }
+    if ((dir & DOWN) == DOWN) { characterActualPosition.y += verticalSpeed; }
    
     // Test we don't exit box vertically
     if (characterActualPosition.y < 0) { return true; }
@@ -54,21 +54,23 @@ bool EntityManager::willCollideVertical(Character* character) const
                     interactable->onInteract(character);
                 }
                 // Collide 
-                return true;
+                if (verticalSpeed > 1)
+                    return willCollideHorizontal(character, verticalSpeed - 1);
+                return 0;
             }
     }
     // no collision detected
-    return false;
+    return verticalSpeed;
 }
 
-bool EntityManager::willCollideHorizontal(Character* character) const
+int EntityManager::willCollideHorizontal(Character* character, int horizontalSpeed) const
 {
     Vector2 characterActualPosition = character->getPosition();
     int dir = character->getDirection();
 
     // In which direction we would go
-    if ((dir & LEFT) == LEFT) { characterActualPosition.x -= 2; }
-    if ((dir & RIGHT) == RIGHT) { characterActualPosition.x += 2; }
+    if ((dir & LEFT) == LEFT) { characterActualPosition.x -= horizontalSpeed; }
+    if ((dir & RIGHT) == RIGHT) { characterActualPosition.x += horizontalSpeed; }
    
     // Test we don't exit box
     if (characterActualPosition.x < 0) { return true; }
@@ -91,10 +93,12 @@ bool EntityManager::willCollideHorizontal(Character* character) const
                 {
                     interactable->onInteract(character);
                 }
-                // Collide 
-                return true;
+                // Collide
+                if (horizontalSpeed > 1)
+                    return willCollideHorizontal(character, horizontalSpeed - 1);
+                return 0;
             }
     }
     // no collision detected
-    return false;
+    return horizontalSpeed;
 }

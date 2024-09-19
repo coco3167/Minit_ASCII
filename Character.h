@@ -9,12 +9,14 @@ public:
     // Getter
     int getLife() const;
     int getDirection() const;
+    int getHorizontalSpeed() const;
+    int getVerticalSpeed() const;
 
     // Setter
     void setDirection(int direction);
     
-    void moveHorizontal();
-    void moveVertical();
+    void moveHorizontal(int moveHorizontalSpeed);
+    void moveVertical(int moveVertivalSpeed);
     void attack(int damage) const;
     void receiveDamage(int damage);
     bool checkIsDead() const;
@@ -27,4 +29,6 @@ private:
     int life = 1;
     int direction = 0;
     bool dead = false;
+    int horizontalSpeed = 2;
+    int verticalSpeed = 1;
 };
