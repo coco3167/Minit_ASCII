@@ -12,6 +12,7 @@ int main()
     
     OutputManager outputManager;
     outputManager.setFixedConsoleSize(WIDTH, HEIGHT);
+    outputManager.setConsoleStyle();
     Player player(0,0);
     Player player2(6,6);
     InputManager inputManager = InputManager(&player);

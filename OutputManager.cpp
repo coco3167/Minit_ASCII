@@ -30,6 +30,17 @@ void OutputManager::maximizeConsoleWindow()
         ShowWindow(hWnd, SW_MAXIMIZE);  // Maximise the window
 }
 
+void OutputManager::setConsoleStyle()
+{
+    HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    CONSOLE_CURSOR_INFO cursorInfo;
+
+    GetConsoleCursorInfo(out, &cursorInfo);
+    cursorInfo.bVisible = false; // set the cursor visibility
+    SetConsoleCursorInfo(out, &cursorInfo);
+}
+
 void OutputManager::setFixedConsoleSize(SHORT width, SHORT height)
 {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
