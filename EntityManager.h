@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "Character.h"
+#include "WinSize.h"
 
 class EntityManager
 {
@@ -11,7 +12,7 @@ private:
 
 public:
     void updateAll();
-    void addEntity(Entity* entity);
+    void addEntity(Entity const& entity);
     void destroyEntity(Entity* entity);
     int willCollideVertical(Character* character,  int verticalSpeed) const;
     int willCollideHorizontal(Character* character, int horizontalSpeed) const;

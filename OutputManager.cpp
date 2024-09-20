@@ -1,14 +1,22 @@
 #include "OutputManager.h"
 
+#include <iostream>
+
+
+OutputManager::OutputManager()
+{
+    maximizeConsoleWindow();
+    buffer = Buffer();
+}
 
 void OutputManager::clearBuffer()
 {
-    for (int i = 0; i < HEIGHT; ++i)
+    for (int i = 0; i < size.Y; ++i)
     {
-        for (int j = 0; j < WIDTH; j++)
+        for (int j = 0; j < size.X; j++)
         {
-        buffer.getScreenBuffer()[i*WIDTH + j].Char.UnicodeChar = 0x2588;  // Empty space
-        buffer.getScreenBuffer()[i*WIDTH + j].Attributes = 0;  // black color
+        buffer.getScreenBuffer()[i*size.X + j].Char.UnicodeChar = 0x2588;  // Empty space
+        buffer.getScreenBuffer()[i*size.X + j].Attributes = 0;  // black color
         }
         
     }
@@ -28,11 +36,54 @@ void OutputManager::maximizeConsoleWindow()
     HWND hWnd = GetConsoleWindow();  // Get console window
     if (hWnd != nullptr)
         ShowWindow(hWnd, SW_MAXIMIZE);  // Maximise the window
+
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    COORD fontSize = GetConsoleFontSize(hConsole, setFont());
+
+    // Get console size
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    GetConsoleScreenBufferInfo(hConsole, &csbi);
+
+    std::cout << "theorical size " << csbi.srWindow.Right - csbi.srWindow.Left + 1 << " " << csbi.srWindow.Bottom - csbi.srWindow.Top;
+    // Set Window size
+    size = WinSize::getInstance({
+        SHORT(csbi.srWindow.Right - csbi.srWindow.Left + 1),
+        SHORT(csbi.srWindow.Bottom - csbi.srWindow.Top + 1)
+    })->size;
+
+    std::cout << "size " << size.X << " " << size.Y;
+    
+    // Set buffer to console size
+    SetConsoleScreenBufferSize(hConsole, COORD{size.X, size.Y});
+
+    // Disable window manual resizing
+    HWND hwndConsole = GetConsoleWindow();
+    LONG style = GetWindowLong(hwndConsole, GWL_STYLE);
+    style &= ~WS_SIZEBOX;  // D�sactiver le redimensionnement
+    style &= ~WS_MAXIMIZEBOX;  // D�sactiver le bouton maximiser
+    SetWindowLong(hwndConsole, GWL_STYLE, style);
+}
+
+DWORD OutputManager::setFont(int fontSize)
+{
+    CONSOLE_FONT_INFOEX cfi;
+    cfi.cbSize = sizeof(cfi);
+    cfi.nFont = 0;
+    cfi.dwFontSize.X = fontSize;                   // Width of each character in the font
+    cfi.dwFontSize.Y = fontSize;                  // Height
+    cfi.FontFamily = FF_DONTCARE;
+    cfi.FontWeight = FW_NORMAL;
+    wcscpy_s(cfi.FaceName, L"Consolas"); // Choose your font
+    SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &cfi);
+
+    return cfi.nFont;
 }
 
 void OutputManager::setFixedConsoleSize(SHORT width, SHORT height)
 {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    COORD fontSize = GetConsoleFontSize(hConsole, setFont());
 
     // 1. Adjust buffer size
     COORD bufferSize;
@@ -64,9 +115,9 @@ void OutputManager::setFixedConsoleSize(SHORT width, SHORT height)
     int screenHeight = GetSystemMetrics(SM_CYSCREEN);
 
     // Pixel size based on character size
-    int consoleWidthInPixels = (width + 1) * 7;
-    int consoleHeightInPixels = (height) * 17;
-
+    int consoleWidthInPixels = (width)*fontSize.Y*1;
+    int consoleHeightInPixels = (height)*fontSize.X*1;
+    
     // New window pos
     int posX = (screenWidth - consoleWidthInPixels) / 2;
     int posY = (screenHeight - consoleHeightInPixels) / 2;
@@ -79,9 +130,9 @@ void OutputManager::display(Entity const& entity)
 {
     Sprite const& sprite = entity.getSprite();
     Vector2 pos = entity.getPosition();
-    for (int i = 0; i < sprite.size(); i++)
+    for (int i = 0; i < int(sprite.size()); i++)
     {
-        for (int j = 0; j < sprite[i].size(); j++)
+        for (int j = 0; j < int(sprite[i].size()); j++)
         {
             buffer.at(pos.x + i, pos.y + j).Char.UnicodeChar = sprite[i][j];
             buffer.at(pos.x + i, pos.y + j).Attributes = FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED;

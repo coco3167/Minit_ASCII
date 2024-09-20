@@ -9,16 +9,17 @@ int main()
 {
     std::ofstream debugFile("DEBUG.txt", std::ios::out | std::ios::trunc);
     std::cout.rdbuf(debugFile.rdbuf());
-    
+
+    // Console output
     OutputManager outputManager;
-    outputManager.setFixedConsoleSize(WIDTH, HEIGHT);
+    
     Player player(0,0);
     Player player2(6,6);
     InputManager inputManager = InputManager(&player);
     EntityManager entityManager = EntityManager();
 
-    entityManager.addEntity(&player);
-    entityManager.addEntity(&player2);
+    entityManager.addEntity(player);
+    entityManager.addEntity(player2);
     
     while (true)
     {

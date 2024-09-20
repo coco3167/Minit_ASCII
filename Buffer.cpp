@@ -1,11 +1,16 @@
 #include "Buffer.h"
 
-Buffer::Buffer():
-    screenBuffer(WIDTH*HEIGHT)
+#include <iostream>
+
+Buffer::Buffer()
 {
-    size = {WIDTH, HEIGHT};
-    coord = {0, 0};
-    writeRegion = {0, 0, WIDTH - 1, HEIGHT - 1};
+    WinSize const* win_size = WinSize::getInstance(); 
+    
+    //changer les width et height partout
+    size = win_size->size;
+    screenBuffer = std::vector<CHAR_INFO>(int(size.X*size.Y));
+    coord = {0,0};
+    writeRegion = SMALL_RECT{0, 0, SHORT(size.X - 1), SHORT(size.Y - 1)};
 }
 
 COORD Buffer::getSize() const
@@ -36,8 +41,8 @@ CHAR_INFO * Buffer::getRawData()
 CHAR_INFO& Buffer::at(int x, int y)
 {
     if (x < 0) x = 0;
-    if (x > WIDTH-1) x = WIDTH-1;
+    if (x > size.X-1) x = size.X-1;
     if (y < 0) y = 0;
-    if (y > HEIGHT-1) y = HEIGHT-1;
-    return screenBuffer[y * WIDTH + x];
+    if (y > size.Y-1) y = size.Y-1;
+    return screenBuffer[y * size.X + x];
 }
