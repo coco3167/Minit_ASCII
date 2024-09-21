@@ -17,9 +17,10 @@ void EntityManager::addEntity(Entity* entity)
 
 void EntityManager::destroyEntity(Entity* entity)
 {
-    for (auto it = entities.begin(); it != entities.end(); ++it)
+    entities.erase(entities.begin(), entities.end());
+    /*for (auto it = entities.begin(); it != entities.end(); ++it)
         if (it->get() == entity)
-            entities.erase(it);
+            entities.erase(it);*/
 }
 
 int EntityManager::willCollideVertical(Character* character, int verticalSpeed) const
