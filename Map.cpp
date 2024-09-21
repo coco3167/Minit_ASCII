@@ -2,6 +2,7 @@
 
 #include <fstream>
 #include <iostream>
+#include <sstream>
 #include <string>
 
 #include "EntityManager.h"
@@ -21,14 +22,27 @@ bool Map::initMap()
         std::cerr << "Error : Can't open level file " << fileName << std::endl;
         return false;
     }
+    
+    std::string line;
     std::string entityName;
     int x, y;
-
+    
     // Reading the file line by line
-    while (file >> entityName >> x >> y)
+    while (std::getline(file, line))
     {
-    file >> entityName >> x >> y;
-        entity_manager->createEntity(entityName, x, y);
+        std::istringstream iss(line);
+
+        // Try to read the name, x position and y position from the line
+        if (iss >> entityName >> x >> y)
+        {
+             entity_manager->createEntity(entityName, x, y);
+        }
+        else
+        {
+            std::cerr << "Line incorrectly formatted: " << line << std::endl;
+            file.close();
+            return false;
+        }
     }
     file.close();
     return true;

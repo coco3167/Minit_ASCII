@@ -27,4 +27,5 @@ public:
     void setConsoleStyle();
     void setFixedConsoleSize(SHORT width, SHORT height);
     void display(Entity const& entity);
+    void displayAll(std::unordered_set<Entity*> entities);
 };

@@ -19,4 +19,5 @@ public:
     void destroyEntity(Entity* entity);
     int willCollideVertical(Character* character,  int verticalSpeed) const;
     int willCollideHorizontal(Character* character, int horizontalSpeed) const;
+    std::unordered_set<Entity*> getEntities() { return entities; }
 };
