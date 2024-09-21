@@ -31,8 +31,7 @@ int main()
         return EXIT_FAILURE;
     }
     
-    OutputManager outputManager(*myPlayer);
-    outputManager.setConsoleStyle();
+    OutputManager outputManager = OutputManager(*myPlayer);
     InputManager inputManager = InputManager(myPlayer);
     
 
@@ -54,7 +53,7 @@ int main()
         //outputManager.display(player3);
         //outputManager.display(player4);
         //outputManager.display(key);
-        //outputManager.drawBuffer(); //Blit buffer on screen
+        outputManager.drawBuffer(); //Blit buffer on screen
 
         Sleep(100); //Let the CPU breath
     }

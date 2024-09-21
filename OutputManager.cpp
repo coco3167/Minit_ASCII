@@ -3,6 +3,7 @@
 
 OutputManager::OutputManager(Player& player, int const fontSize) : player{ player }
 {
+    setConsoleStyle();
     maximizeConsoleWindow(fontSize);
     buffer = Buffer();
 }
