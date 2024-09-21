@@ -1,4 +1,5 @@
 ﻿#pragma once
+
 #include "Character.h"
 
 class Monster1 : public Character

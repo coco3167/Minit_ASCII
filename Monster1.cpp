@@ -6,8 +6,10 @@
 #include "Direction.h"
 #include "Player.h"
 
-Monster1::Monster1(int x, int y):
-    Character(x, y, Sprite("monster1.txt")){ setDamage(1); }
+Monster1::Monster1(int x, int y): Character(x, y, Sprite("monster1.txt"))
+{
+    setDamage(1);
+}
 
 void Monster1::update(EntityManager& entity_manager)
 {
@@ -30,9 +32,9 @@ void Monster1::onInteract(Entity* interactor)
 void Monster1::setRandomDirection()
 {
     std::vector<int> list = {LEFT, RIGHT, UP, DOWN};
+    // OPTION 1 : good pattern BUT all monsters have same
     std::srand(std::time(0));
     setDirection(list[std::rand() % 4]);
-    std::cout << "Monster1::setRandomDirection : " << getDirection() << std::endl;
 }
 
 

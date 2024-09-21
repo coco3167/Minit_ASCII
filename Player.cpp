@@ -1,30 +1,26 @@
 ﻿#include "Player.h"
 
-Player::Player(int x, int y):
-    Character(x, y, Sprite("player.txt"))
-{}
+#include "Spawn.h"
 
-int Player::getKey() const
-{
-    return key;
-}
+Player::Player(int x, int y): Character(x, y, Sprite("player.txt")) { setSpawnPosition({x, y}); }
 
-void Player::addKey()
-{
-    this->key++;
-}
+Vector2 Player::getSpawnPosition() const { return spawnPosition; }
+
+void Player::setSpawnPosition(Vector2 spawnPosition) { this->spawnPosition = spawnPosition; }
+
+int Player::getKey() const { return key; }
+
+void Player::addKey() { this->key++; }
 
 void Player::update(EntityManager& entity_manager)
 {
     Character::update(entity_manager);
-    /*if (dead)
-        DeathEvent(entity_manager);*/
 }
 
 void Player::DeathEvent()
 {
     Character::DeathEvent();
-    setPosition({6,6});
+    setPosition({getSpawnPosition().x,getSpawnPosition().y});
 }
 
 void Player::onInteract(Entity* interactor)

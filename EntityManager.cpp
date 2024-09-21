@@ -10,6 +10,7 @@
 #include "Monster1.h"
 #include "Monster2.h"
 #include "Player.h"
+#include "Spawn.h"
 #include "WinSize.h"
 
 void EntityManager::updateAll()
@@ -33,25 +34,19 @@ void EntityManager::createEntity(std::string entityName, int x, int y)
         }
     }
     else if (entityName == "k")
-    {
-        Key* newKey = new Key(x, y);
-        addEntity(newKey);
-    }
+        addEntity(new Key(x, y));
+    
     else if (entityName == "d")
-    {
-        Door* newDoor = new Door(x, y);
-        addEntity(newDoor);
-    }
+        addEntity(new Door(x, y));
+    
     else if (entityName == "m1")
-    {
-        Monster1* newMonster1 = new Monster1(x, y);
-        addEntity(newMonster1);
-    }
+        addEntity(new Monster1(x, y));
+    
     else if (entityName == "m2")
-    {
-        Monster2* newMonster2 = new Monster2(x, y);
-        addEntity(newMonster2);
-    }
+        addEntity(new Monster2(x, y));
+    
+    else if (entityName == "s")
+        addEntity(new Spawn(x, y));
 }
 
 void EntityManager::addEntity(Entity* entity)
