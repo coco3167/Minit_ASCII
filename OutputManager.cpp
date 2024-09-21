@@ -2,9 +2,9 @@
 
 #include <iostream>
 
-OutputManager::OutputManager(Player& player) : player{ player }
+OutputManager::OutputManager(Player& player, int const fontSize) : player{ player }
 {
-    maximizeConsoleWindow();
+    maximizeConsoleWindow(fontSize);
     buffer = Buffer();
 }
 
@@ -30,14 +30,14 @@ void OutputManager::drawBuffer()
     WriteConsoleOutput(hConsole, buffer.getRawData(), buffer.getSize(), buffer.getCoord(), buffer.getWriteRegion());
 }
 
-void OutputManager::maximizeConsoleWindow()
+void OutputManager::maximizeConsoleWindow(int const fontSize)
 {
     HWND hWnd = GetConsoleWindow();  // Get console window
     if (hWnd != nullptr)
         ShowWindow(hWnd, SW_MAXIMIZE);  // Maximise the window
 
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    COORD fontSize = GetConsoleFontSize(hConsole, setFont());
+    setFont(fontSize);
 
     // Get console size
     CONSOLE_SCREEN_BUFFER_INFO csbi;
@@ -62,7 +62,7 @@ void OutputManager::maximizeConsoleWindow()
     SetWindowLong(hwndConsole, GWL_STYLE, style);
 }
 
-DWORD OutputManager::setFont(int fontSize)
+DWORD OutputManager::setFont(int const fontSize)
 {
     CONSOLE_FONT_INFOEX cfi;
     cfi.cbSize = sizeof(cfi);
