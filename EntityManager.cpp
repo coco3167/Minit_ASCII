@@ -79,7 +79,7 @@ int EntityManager::willCollideVertical(Character* character, int verticalSpeed) 
     for (auto it = entities.begin(); it != entities.end(); it++)
     {
         Entity* entity = *it;
-        if (entity != character && hitbox.isColliding(entity->getHitbox()))
+        if (entity != character && entity->getCollision() && hitbox.isColliding(entity->getHitbox()))
         {
             // Try interaction on colliding entity
             InteractableEntity* interactable = dynamic_cast<InteractableEntity*>(entity);
@@ -119,7 +119,7 @@ int EntityManager::willCollideHorizontal(Character* character, int horizontalSpe
     for (auto it = entities.begin(); it != entities.end(); it++)
     {
         Entity* entity = *it;
-        if (entity != character && hitbox.isColliding(entity->getHitbox()))
+        if (entity != character && entity->getCollision() && hitbox.isColliding(entity->getHitbox()))
         {
             // Try interaction on colliding entity
             InteractableEntity* interactable = dynamic_cast<InteractableEntity*>(entity);
