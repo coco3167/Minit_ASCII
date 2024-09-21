@@ -21,5 +21,8 @@ void Door::openDoor()
     {
         // OPEN DOOR
         open = true;
+        //destroy = true;
+        setSprite(Sprite("doorOpened.txt"));
+        setCollision(false);
     }
 }

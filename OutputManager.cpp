@@ -164,10 +164,10 @@ void OutputManager::setFixedConsoleSize(SHORT width, SHORT height)
 
 void OutputManager::displayEntities(std::unordered_set<Entity*> entities)
 {
+    WinSize const& winSize(WinSize::getInstance());
+
     for (auto it = entities.begin(); it != entities.end(); ++it)
     {
-        WinSize const& winSize(WinSize::getInstance());
-        
         Sprite const& sprite{ (*it)->getSprite() };
         Vector2 entityPos{ (*it)->getPosition() };
         Vector2 playerPos{ player.getPosition() };
@@ -178,7 +178,9 @@ void OutputManager::displayEntities(std::unordered_set<Entity*> entities)
         {
             for (int j = 0; j < int(sprite[i].size()); j++)
             {
-                if (pos.x + i >= 0 and pos.x + i < winSize.getSize().X and pos.y + j >= 0 and pos.y + j < winSize.getSize().Y)
+                if (sprite[i][j] != 0x00A7 and
+                    pos.x + i >= 0 and pos.x + i < winSize.getSize().X and
+                    pos.y + j >= 0 and pos.y + j < winSize.getSize().Y)
                 {
                     CHAR_INFO& pixel = buffer.at(pos.x + i, pos.y + j);
                     pixel.Char.UnicodeChar = sprite[i][j];

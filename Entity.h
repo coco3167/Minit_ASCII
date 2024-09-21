@@ -27,6 +27,8 @@ public:
     void setPosition(const Vector2& position);
     void setHidden(bool hidden);
     void setHitbox(int x, int y, int w, int h);
+    bool getCollision(void) {return collision;}
+    void setCollision(bool collision) { this->collision = collision;};
     
     virtual void update(EntityManager& entity_manager);
     
@@ -37,4 +39,5 @@ private:
 
 protected:
     bool destroy = false;
+    bool collision = true;
 };
