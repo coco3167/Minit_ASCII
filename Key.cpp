@@ -14,7 +14,6 @@ void Key::onInteract(Entity* interactor)
     if(Player* player = dynamic_cast<Player*>(interactor))
     {
         player->setKey(player->getKey() + 1);
-        std::cout << player->getKey() << std::endl;
         //DESTROY KEY
         destroy = true;
     }

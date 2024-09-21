@@ -1,5 +1,4 @@
 #include "OutputManager.h"
-
 #include <iostream>
 
 OutputManager::OutputManager(Player& player, int const fontSize) : player{ player }

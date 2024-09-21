@@ -1,8 +1,13 @@
 ﻿#include "EntityManager.h"
+
+#include <iostream>
+
 #include "Direction.h"
 #include "Hitbox.h"
 #include "InteractableEntity.h"
+#include "Key.h"
 #include "Player.h"
+#include "WinSize.h"
 
 void EntityManager::updateAll()
 {
@@ -10,9 +15,27 @@ void EntityManager::updateAll()
         (*it)->update(*this);
 }
 
+void EntityManager::createEntity(std::string entityName, int x, int y)
+{
+    if (entityName == "p")
+    {
+        Player* newPlayer = new Player(x, y);
+        addEntity(newPlayer);
+        if (player == nullptr)
+        {
+            player = newPlayer;
+        }
+    }
+    else if (entityName == "k")
+    {
+        Key* newKey = new Key(x, y);
+        addEntity(newKey);
+    }
+}
+
 void EntityManager::addEntity(Entity* entity)
 {
-    entities.insert(std::unique_ptr<Entity>(entity));
+    entities.insert(entity);
 }
 
 void EntityManager::destroyEntity(Entity* entity)
@@ -43,7 +66,7 @@ int EntityManager::willCollideVertical(Character* character, int verticalSpeed) 
     // test collision with others entity
     for (auto it = entities.begin(); it != entities.end(); it++)
     {
-        Entity* entity = it->get();
+        Entity* entity = *it;
         if (entity != character && hitbox.isColliding(entity->getHitbox()))
         {
             // Try interaction on colliding entity
@@ -82,7 +105,7 @@ int EntityManager::willCollideHorizontal(Character* character, int horizontalSpe
     // test collision with others entity
     for (auto it = entities.begin(); it != entities.end(); it++)
     {
-        Entity* entity = it->get();
+        Entity* entity = *it;
         if (entity != character && hitbox.isColliding(entity->getHitbox()))
         {
             // Try interaction on colliding entity
@@ -100,3 +123,4 @@ int EntityManager::willCollideHorizontal(Character* character, int horizontalSpe
     // no collision detected
     return horizontalSpeed;
 }
+

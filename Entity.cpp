@@ -1,8 +1,4 @@
 ﻿#include "Entity.h"
-#include "EntityManager.h"
-
-#include <iostream>
-#include <ostream>
 
 Entity::Entity(int x, int y, int w, int h, Sprite sprite):
     hitbox{x,y,w,h},
