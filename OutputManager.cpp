@@ -9,14 +9,18 @@ OutputManager::OutputManager()
     buffer = Buffer();
 }
 
+OutputManager::OutputManager(Player& player) : player{ player }
+{
+}
+
 void OutputManager::clearBuffer()
 {
     for (int i = 0; i < size.Y; ++i)
     {
         for (int j = 0; j < size.X; j++)
         {
-        buffer.getScreenBuffer()[i*size.X + j].Char.UnicodeChar = 0x2588;  // Empty space
-        buffer.getScreenBuffer()[i*size.X + j].Attributes = 0;  // black color
+          buffer.getScreenBuffer()[i*size.X + j].Char.UnicodeChar = 0x2588;  // Empty space
+          buffer.getScreenBuffer()[i*size.X + j].Attributes = 0;  // black color
         }
         
     }
@@ -78,6 +82,17 @@ DWORD OutputManager::setFont(int fontSize)
     return cfi.nFont;
 }
 
+void OutputManager::setConsoleStyle()
+{
+    HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    CONSOLE_CURSOR_INFO cursorInfo;
+
+    GetConsoleCursorInfo(out, &cursorInfo);
+    cursorInfo.bVisible = false; // set the cursor visibility
+    SetConsoleCursorInfo(out, &cursorInfo);
+}
+
 void OutputManager::setFixedConsoleSize(SHORT width, SHORT height)
 {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -101,8 +116,8 @@ void OutputManager::setFixedConsoleSize(SHORT width, SHORT height)
     // 3. Disable window manual resizing
     HWND hwndConsole = GetConsoleWindow();
     LONG style = GetWindowLong(hwndConsole, GWL_STYLE);
-    style &= ~WS_SIZEBOX;  // D�sactiver le redimensionnement
-    style &= ~WS_MAXIMIZEBOX;  // D�sactiver le bouton maximiser
+    style &= ~WS_SIZEBOX;  // Disable redimensionning
+    style &= ~WS_MAXIMIZEBOX;  // Disable maximize button
     SetWindowLong(hwndConsole, GWL_STYLE, style);
 
     // 4. Calculate window position to center in screen
@@ -127,14 +142,22 @@ void OutputManager::setFixedConsoleSize(SHORT width, SHORT height)
 
 void OutputManager::display(Entity const& entity)
 {
-    Sprite const& sprite = entity.getSprite();
-    Vector2 pos = entity.getPosition();
-    for (int i = 0; i < int(sprite.size()); i++)
+    Sprite const& sprite{ entity.getSprite() };
+    Vector2 entityPos{ entity.getPosition() };
+    Vector2 playerPos{ player.getPosition() };
+    Hitbox playerBox{ player.getHitbox() };
+    Vector2 playerCenter{ playerPos.x + playerBox.w / 2, playerPos.y + playerBox.h / 2 };
+    Vector2 pos{entityPos.x - playerCenter.x + WIDTH/2, entityPos.y - playerCenter.y + HEIGHT/2};
+    for (int i = 0; i < sprite.size(); i++)
     {
         for (int j = 0; j < int(sprite[i].size()); j++)
         {
-            buffer.at(pos.x + i, pos.y + j).Char.UnicodeChar = sprite[i][j];
-            buffer.at(pos.x + i, pos.y + j).Attributes = FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED;
+            if (pos.x + i >= 0 and pos.x + i < WIDTH and pos.y + j >= 0 and pos.y + j < HEIGHT)
+            {
+                CHAR_INFO& pixel = buffer.at(pos.x + i, pos.y + j);
+                pixel.Char.UnicodeChar = sprite[i][j];
+                pixel.Attributes = FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED;
+            }
         }
     }
 }
