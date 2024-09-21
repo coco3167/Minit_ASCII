@@ -5,12 +5,21 @@
 
 WinSize* WinSize::instance = nullptr;
 
+void WinSize::setSize(COORD size)
+{
+    this->size = size;
+}
+
+COORD const& WinSize::getSize()
+{
+    return size;
+}
+
 WinSize::WinSize(COORD size) : size(size){}
 
-WinSize const* WinSize::getInstance(COORD const size)
+WinSize& WinSize::getInstance()
 {
-    std::cout << "get instance : " << (instance==nullptr) << std::endl;
     if(instance==nullptr)
-        instance = new WinSize(size);
-    return instance;
+        instance = new WinSize({0,0});
+    return *instance;
 }

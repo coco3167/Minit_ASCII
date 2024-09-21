@@ -11,12 +11,15 @@ public:
     WinSize(const WinSize&) = delete;
     void operator=(const WinSize&) = delete;
 
-    const COORD size;
     
-    static WinSize const* getInstance(COORD const size = {0, 0});
+    static WinSize& getInstance();
+
+    void setSize(COORD size);
+    COORD const& getSize();
 
     
 private:
+    COORD size;
     WinSize(COORD size);
     static WinSize* instance;
 };

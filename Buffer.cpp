@@ -4,10 +4,10 @@
 
 Buffer::Buffer()
 {
-    WinSize const* win_size = WinSize::getInstance(); 
+    WinSize& win_size = WinSize::getInstance(); 
     
     //changer les width et height partout
-    size = win_size->size;
+    size = win_size.getSize();
     screenBuffer = std::vector<CHAR_INFO>(int(size.X*size.Y));
     coord = {0,0};
     writeRegion = SMALL_RECT{0, 0, SHORT(size.X - 1), SHORT(size.Y - 1)};

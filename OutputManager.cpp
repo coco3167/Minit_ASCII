@@ -44,14 +44,13 @@ void OutputManager::maximizeConsoleWindow()
     CONSOLE_SCREEN_BUFFER_INFO csbi;
     GetConsoleScreenBufferInfo(hConsole, &csbi);
 
-    std::cout << "theorical size " << csbi.srWindow.Right - csbi.srWindow.Left + 1 << " " << csbi.srWindow.Bottom - csbi.srWindow.Top;
     // Set Window size
-    size = WinSize::getInstance({
+    WinSize & winSize = WinSize::getInstance();
+    size = {
         SHORT(csbi.srWindow.Right - csbi.srWindow.Left + 1),
         SHORT(csbi.srWindow.Bottom - csbi.srWindow.Top + 1)
-    })->size;
-
-    std::cout << "size " << size.X << " " << size.Y;
+    };
+    winSize.setSize(size);
     
     // Set buffer to console size
     SetConsoleScreenBufferSize(hConsole, COORD{size.X, size.Y});
