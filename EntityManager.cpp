@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "Direction.h"
+#include "Door.h"
 #include "Hitbox.h"
 #include "InteractableEntity.h"
 #include "Key.h"
@@ -33,6 +34,11 @@ void EntityManager::createEntity(std::string entityName, int x, int y)
     {
         Key* newKey = new Key(x, y);
         addEntity(newKey);
+    }
+    else if (entityName == "d")
+    {
+        Door* newDoor = new Door(x, y);
+        addEntity(newDoor);
     }
 }
 

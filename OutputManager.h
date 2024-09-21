@@ -26,6 +26,6 @@ public:
     void maximizeConsoleWindow(int const fontSize);
     void setConsoleStyle();
     void setFixedConsoleSize(SHORT width, SHORT height);
-    void display(Entity const& entity);
-    void displayAll(std::unordered_set<Entity*> entities);
+    //void display(Entity const& entity);
+    void displayEntities(std::unordered_set<Entity*> entities);
 };
