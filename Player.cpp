@@ -27,6 +27,17 @@ void Player::DeathEvent()
     setPosition({6,6});
 }
 
+void Player::onInteract(Entity* interactor)
+{
+    Character::onInteract(interactor);
+    Character* character = dynamic_cast<Character*>(interactor);
+    
+    if(character != nullptr)
+    {
+        receiveDamage(character->getDamage());
+    }
+}
+
 /*void Player::DeathEvent(EntityManager& entity_manager)
 {
     Character::DeathEvent(entity_manager);

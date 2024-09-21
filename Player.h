@@ -11,6 +11,7 @@ public:
     
     void update(EntityManager& entity_manager) override;
     virtual void DeathEvent() override;
+    void onInteract(Entity* interactor) override;
 
 private:
     int key = 0;
