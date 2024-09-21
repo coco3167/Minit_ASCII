@@ -10,7 +10,7 @@ void WinSize::setSize(COORD size)
     this->size = size;
 }
 
-COORD const& WinSize::getSize()
+COORD const& WinSize::getSize() const
 {
     return size;
 }

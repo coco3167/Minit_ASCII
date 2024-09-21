@@ -4,6 +4,7 @@
 #include "EntityManager.h"
 #include "InputManager.h"
 #include "OutputManager.h"
+#include "WinSize.h"
 
 int main()
 {
@@ -12,7 +13,6 @@ int main()
     
     Player player(0,0);
     OutputManager outputManager(player);
-    outputManager.setFixedConsoleSize(WIDTH, HEIGHT);
     outputManager.setConsoleStyle();
     Player player2(6, 6);
     Player player3(20, 6);

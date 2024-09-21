@@ -13,7 +13,6 @@ private:
     COORD size;
     
 public:
-    OutputManager();
     Player& player;
 public:
     OutputManager(Player& player);

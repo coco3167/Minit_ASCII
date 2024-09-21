@@ -15,7 +15,7 @@ public:
     static WinSize& getInstance();
 
     void setSize(COORD size);
-    COORD const& getSize();
+    COORD const& getSize() const;
 
     
 private:

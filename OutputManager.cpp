@@ -2,15 +2,10 @@
 
 #include <iostream>
 
-
-OutputManager::OutputManager()
+OutputManager::OutputManager(Player& player) : player{ player }
 {
     maximizeConsoleWindow();
     buffer = Buffer();
-}
-
-OutputManager::OutputManager(Player& player) : player{ player }
-{
 }
 
 void OutputManager::clearBuffer()
@@ -142,17 +137,19 @@ void OutputManager::setFixedConsoleSize(SHORT width, SHORT height)
 
 void OutputManager::display(Entity const& entity)
 {
+    WinSize const& winSize(WinSize::getInstance());
+
     Sprite const& sprite{ entity.getSprite() };
     Vector2 entityPos{ entity.getPosition() };
     Vector2 playerPos{ player.getPosition() };
     Hitbox playerBox{ player.getHitbox() };
     Vector2 playerCenter{ playerPos.x + playerBox.w / 2, playerPos.y + playerBox.h / 2 };
-    Vector2 pos{entityPos.x - playerCenter.x + WIDTH/2, entityPos.y - playerCenter.y + HEIGHT/2};
+    Vector2 pos{entityPos.x - playerCenter.x + winSize.getSize().X/2, entityPos.y - playerCenter.y + winSize.getSize().Y/2};
     for (int i = 0; i < sprite.size(); i++)
     {
         for (int j = 0; j < int(sprite[i].size()); j++)
         {
-            if (pos.x + i >= 0 and pos.x + i < WIDTH and pos.y + j >= 0 and pos.y + j < HEIGHT)
+            if (pos.x + i >= 0 and pos.x + i < winSize.getSize().X and pos.y + j >= 0 and pos.y + j < winSize.getSize().Y)
             {
                 CHAR_INFO& pixel = buffer.at(pos.x + i, pos.y + j);
                 pixel.Char.UnicodeChar = sprite[i][j];
