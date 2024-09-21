@@ -19,6 +19,7 @@ public:
     Vector2 getPosition() const;
     Hitbox getHitbox() const;
     bool isHidden() const;
+    bool shouldDestroy() const;
     Sprite const& getSprite() const;
 
     // Setter
@@ -33,4 +34,7 @@ private:
     bool hidden = false;
     Sprite sprite;
     Hitbox hitbox;
+
+protected:
+    bool destroy = false;
 };

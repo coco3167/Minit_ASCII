@@ -10,10 +10,11 @@ Key::Key(int x, int y) : InteractableEntity(x, y, Sprite("key.txt")){}
 
 void Key::onInteract(Entity* interactor)
 {
-    std::cout << "InteractableEntity::onInteract" << std::endl;
-    if(Player* player = dynamic_cast<Player*>(interactor))
+    Player* player = dynamic_cast<Player*>(interactor);
+    
+    if(player != nullptr)
     {
-        player->setKey(player->getKey() + 1);
+        player->addKey();
         //DESTROY KEY
         destroy = true;
     }
@@ -23,9 +24,4 @@ void Key::onInteract(Entity* interactor)
 void Key::update(EntityManager& entity_manager)
 {
     InteractableEntity::update(entity_manager);
-    if (destroy)
-    {
-        destroy = false;
-        entity_manager.destroyEntity(this);
-    }
 }

@@ -7,7 +7,4 @@ public:
     Key(int x, int y);
     void onInteract(Entity* interactor) override;
     void update(EntityManager& entity_manager) override;
-
-private:
-    bool destroy = false;
 };

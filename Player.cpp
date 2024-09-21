@@ -9,9 +9,9 @@ int Player::getKey() const
     return key;
 }
 
-void Player::setKey(int newKey)
+void Player::addKey()
 {
-    this->key = newKey;
+    this->key++;
 }
 
 void Player::update(EntityManager& entity_manager)

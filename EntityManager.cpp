@@ -12,7 +12,10 @@
 void EntityManager::updateAll()
 {
     for (auto it = entities.begin() ; it != entities.end() ; it++)
-        (*it)->update(*this);
+        if((*it)->shouldDestroy())
+            it = entities.erase(it);
+        else
+            (*it)->update(*this);
 }
 
 void EntityManager::createEntity(std::string entityName, int x, int y)
@@ -40,7 +43,9 @@ void EntityManager::addEntity(Entity* entity)
 
 void EntityManager::destroyEntity(Entity* entity)
 {
-    entities.erase(entities.begin(), entities.end());
+    entities.erase(entity);
+    delete entity;
+
     /*for (auto it = entities.begin(); it != entities.end(); ++it)
         if (it->get() == entity)
             entities.erase(it);*/
