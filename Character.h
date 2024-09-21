@@ -17,18 +17,17 @@ public:
     
     void moveHorizontal(int moveHorizontalSpeed);
     void moveVertical(int moveVertivalSpeed);
-    void attack(int damage) const;
     void receiveDamage(int damage);
     bool checkIsDead() const;
+    //void attack(int damage) const;
     void update(EntityManager& entity_manager) override;
 
     virtual void DeathEvent(EntityManager const& entity_manager);
-
     
 private:
     int life = 1;
     int direction = 0;
-    bool dead = false;
     int horizontalSpeed = 2;
     int verticalSpeed = 1;
+    //bool dead = false;
 };

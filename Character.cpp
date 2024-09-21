@@ -1,7 +1,8 @@
 ﻿#include "Character.h"
-#include "EntityManager.h"
 
 #include <iostream>
+
+#include "EntityManager.h"
 
 #include "Direction.h"
 
@@ -23,12 +24,8 @@ int Character::getVerticalSpeed() const { return verticalSpeed; }
 Setter
 ====================
 */
-void Character::setDirection(int direction) { this->direction = direction; }
-
-
-
-
-
+// Set the direction the character would like to go
+void Character::setDirection(int newDirection) { direction = newDirection; }
 
 void Character::moveVertical(int moveVerticalSpeed)
 {
@@ -57,10 +54,10 @@ void Character::moveHorizontal(int moveHorizontalSpeed)
 void Character::receiveDamage(int damage)
 {
     life -= damage;
-    if (checkIsDead())
+    /*if (checkIsDead())
     {
         // DeathEvent
-    }
+    }*/
 }
 
 bool Character::checkIsDead() const { return life <= 0; }

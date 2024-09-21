@@ -30,7 +30,7 @@ public:
     virtual void update(EntityManager& entity_manager);
     
 private:
-    bool hidden;
+    bool hidden = false;
     Sprite sprite;
     Hitbox hitbox;
 };

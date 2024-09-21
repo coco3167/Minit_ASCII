@@ -1,6 +1,10 @@
 #pragma once
 
+#include <memory>
+#include <unordered_set>
+
 #include "Buffer.h"
+#include "EntityManager.h"
 #include "WinSize.h"
 #include "Player.h"
 
@@ -14,6 +18,7 @@ private:
     
 public:
     Player& player;
+
 public:
     OutputManager(Player& player);
     void clearBuffer();

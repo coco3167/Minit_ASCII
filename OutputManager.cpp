@@ -1,8 +1,7 @@
 #include "OutputManager.h"
-
 #include <iostream>
 
-OutputManager::OutputManager(Player& player) : player{ player }
+OutputManager::OutputManager(Player& player) : player(player)
 {
     maximizeConsoleWindow();
     buffer = Buffer();

@@ -2,7 +2,7 @@
 
 #include <windows.h>
 #include <vector>
-#include "WinSize.h"
+
 
 class Buffer
 {
@@ -11,6 +11,7 @@ private:
 	COORD size;
 	COORD coord;
 	SMALL_RECT writeRegion;
+	
 public:
 	Buffer();
 
