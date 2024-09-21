@@ -54,7 +54,7 @@ void Entity::setHidden(bool hidden) { this->hidden = hidden; }
 
 
 
-void Entity::update(EntityManager const& entity_manager)
+void Entity::update(EntityManager& entity_manager)
 {
     //std::cout << "Entity::update()";
 }

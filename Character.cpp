@@ -65,7 +65,7 @@ void Character::receiveDamage(int damage)
 
 bool Character::checkIsDead() const { return life <= 0; }
 
-void Character::update(EntityManager const& entity_manager)
+void Character::update(EntityManager& entity_manager)
 {
     Entity::update(entity_manager);
     

@@ -27,7 +27,7 @@ public:
     void setHidden(bool hidden);
     void setHitbox(int x, int y, int w, int h);
     
-    virtual void update(EntityManager const& entity_manager);
+    virtual void update(EntityManager& entity_manager);
     
 private:
     bool hidden;

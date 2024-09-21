@@ -9,8 +9,8 @@ public:
     int getKey() const;
     void setKey(int key);
     
-    void update(EntityManager const& entity_manager) override;
-    void DeathEvent(EntityManager const& entity_manager) override;
+    void update(EntityManager& entity_manager) override;
+    //void DeathEvent(EntityManager& entity_manager) override;
 
 private:
     int key = 0;

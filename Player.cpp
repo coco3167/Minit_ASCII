@@ -14,15 +14,15 @@ void Player::setKey(int newKey)
     this->key = newKey;
 }
 
-void Player::update(EntityManager const& entity_manager)
+void Player::update(EntityManager& entity_manager)
 {
     Character::update(entity_manager);
     /*if (dead)
         DeathEvent(entity_manager);*/
 }
 
-void Player::DeathEvent(EntityManager const& entity_manager)
+/*void Player::DeathEvent(EntityManager& entity_manager)
 {
     Character::DeathEvent(entity_manager);
     setPosition({0, 0});
-}
+}*/

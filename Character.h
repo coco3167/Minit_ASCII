@@ -20,7 +20,7 @@ public:
     void attack(int damage) const;
     void receiveDamage(int damage);
     bool checkIsDead() const;
-    void update(EntityManager const& entity_manager) override;
+    void update(EntityManager& entity_manager) override;
 
     virtual void DeathEvent(EntityManager const& entity_manager);
 
