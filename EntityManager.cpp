@@ -1,7 +1,6 @@
 ﻿#include "EntityManager.h"
 #include "Direction.h"
 #include "Hitbox.h"
-#include "WinSize.h"
 #include "InteractableEntity.h"
 #include "Player.h"
 
@@ -11,15 +10,15 @@ void EntityManager::updateAll()
         (*it)->update(*this);
 }
 
-void EntityManager::addEntity(Entity* entity)
+void EntityManager::addEntity(Entity const& entity)
 {
-    entities.insert(std::unique_ptr<Entity>(entity));
+    entities.insert(std::make_unique<Entity>(entity));
 }
 
 void EntityManager::destroyEntity(Entity* entity)
 {
-    for (auto it = entities.begin(); it != entities.end(); it++)
-        if ((*it).get() == entity)
+    for (auto it = entities.begin(); it != entities.end(); ++it)
+        if (it->get() == entity)
             entities.erase(it);
 }
 
@@ -34,7 +33,7 @@ int EntityManager::willCollideVertical(Character* character, int verticalSpeed) 
    
     // Test we don't exit box vertically
     if (characterActualPosition.y < 0) { return 0; }
-    if (characterActualPosition.y + character->getHitbox().h > HEIGHT) { return 0; }
+    if (characterActualPosition.y + character->getHitbox().h > WinSize::getInstance().getSize().X) { return 0; }
 
     // Get Hitbox in place where we would like to be
     Hitbox hitbox = (character->getHitbox());
@@ -73,7 +72,7 @@ int EntityManager::willCollideHorizontal(Character* character, int horizontalSpe
    
     // Test we don't exit box
     if (characterActualPosition.x < 0) { return false; }
-    if (characterActualPosition.x + character->getHitbox().w > WIDTH) { return false; }
+    if (characterActualPosition.x + character->getHitbox().w > WinSize::getInstance().getSize().X) { return false; }
 
     // Get Hitbox in place where we would like to be
     Hitbox hitbox = (character->getHitbox());

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Buffer.h"
+#include "WinSize.h"
 #include "Player.h"
 
 
@@ -8,6 +9,11 @@ class OutputManager
 {
 private:
     Buffer buffer;
+    DWORD setFont(int fontSize = 12);
+    COORD size;
+    
+public:
+    OutputManager();
     Player& player;
 public:
     OutputManager(Player& player);
