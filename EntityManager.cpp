@@ -7,6 +7,8 @@
 #include "Hitbox.h"
 #include "InteractableEntity.h"
 #include "Key.h"
+#include "Monster1.h"
+#include "Monster2.h"
 #include "Player.h"
 #include "WinSize.h"
 
@@ -39,6 +41,16 @@ void EntityManager::createEntity(std::string entityName, int x, int y)
     {
         Door* newDoor = new Door(x, y);
         addEntity(newDoor);
+    }
+    else if (entityName == "m1")
+    {
+        Monster1* newMonster1 = new Monster1(x, y);
+        addEntity(newMonster1);
+    }
+    else if (entityName == "m2")
+    {
+        Monster2* newMonster2 = new Monster2(x, y);
+        addEntity(newMonster2);
     }
 }
 

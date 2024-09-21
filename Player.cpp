@@ -21,6 +21,12 @@ void Player::update(EntityManager& entity_manager)
         DeathEvent(entity_manager);*/
 }
 
+void Player::DeathEvent()
+{
+    Character::DeathEvent();
+    setPosition({6,6});
+}
+
 /*void Player::DeathEvent(EntityManager& entity_manager)
 {
     Character::DeathEvent(entity_manager);

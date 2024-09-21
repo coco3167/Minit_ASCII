@@ -27,6 +27,8 @@ Setter
 // Set the direction the character would like to go
 void Character::setDirection(int newDirection) { direction = newDirection; }
 
+void Character::setDamage(int damage) { this->damage = damage; }
+
 void Character::moveVertical(int moveVerticalSpeed)
 {
     if ((direction & UP) == UP)
@@ -48,13 +50,15 @@ void Character::moveHorizontal(int moveHorizontalSpeed)
 void Character::receiveDamage(int damage)
 {
     life -= damage;
-    /*if (checkIsDead())
+    if (checkIsDead())
     {
-        // DeathEvent
-    }*/
+        DeathEvent();
+    }
 }
 
 bool Character::checkIsDead() const { return life <= 0; }
+
+int Character::getDamage() const { return damage; }
 
 void Character::update(EntityManager& entity_manager)
 {
@@ -72,6 +76,11 @@ void Character::update(EntityManager& entity_manager)
         moveVertical(moveVerticalSpeed);
 }
 
-void Character::DeathEvent(EntityManager const& entity_manager)
+void Character::onInteract(Entity* interactor)
 {
+}
+
+void Character::DeathEvent()
+{
+    setPosition({0,0});
 }

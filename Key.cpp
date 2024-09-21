@@ -18,7 +18,6 @@ void Key::onInteract(Entity* interactor)
         //DESTROY KEY
         destroy = true;
     }
-    
 }
 
 void Key::update(EntityManager& entity_manager)

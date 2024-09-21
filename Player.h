@@ -10,7 +10,7 @@ public:
     void addKey();
     
     void update(EntityManager& entity_manager) override;
-    //void DeathEvent(EntityManager& entity_manager) override;
+    virtual void DeathEvent() override;
 
 private:
     int key = 0;
