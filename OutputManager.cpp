@@ -32,12 +32,13 @@ void OutputManager::drawBuffer()
 
 void OutputManager::maximizeConsoleWindow(int const fontSize)
 {
+    setFont(fontSize);
+    
     HWND hWnd = GetConsoleWindow();  // Get console window
     if (hWnd != nullptr)
         ShowWindow(hWnd, SW_MAXIMIZE);  // Maximise the window
 
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    setFont(fontSize);
 
     // Get console size
     CONSOLE_SCREEN_BUFFER_INFO csbi;
@@ -45,13 +46,15 @@ void OutputManager::maximizeConsoleWindow(int const fontSize)
 
     // Set Window size
     WinSize & winSize = WinSize::getInstance();
-    size = {
-        SHORT(csbi.srWindow.Right - csbi.srWindow.Left + 1),
-        SHORT(csbi.srWindow.Bottom - csbi.srWindow.Top + 1)
-    };
+    SMALL_RECT rect;
+    rect.Left = rect.Top = 0;
+    rect.Right = csbi.dwMaximumWindowSize.X-1;
+    rect.Bottom = csbi.dwMaximumWindowSize.Y-1;
+    size = {SHORT(rect.Right+1), SHORT(rect.Bottom+1)};
     winSize.setSize(size);
     
     // Set buffer to console size
+    SetConsoleWindowInfo(hConsole, true, &rect);
     SetConsoleScreenBufferSize(hConsole, COORD{size.X, size.Y});
 
     // Disable window manual resizing
