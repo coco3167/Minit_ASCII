@@ -54,10 +54,11 @@ int EntityManager::willCollideVertical(Character* character, int verticalSpeed) 
     // In which direction we would go vertically
     if ((dir & UP) == UP) { characterActualPosition.y -= verticalSpeed; }
     if ((dir & DOWN) == DOWN) { characterActualPosition.y += verticalSpeed; }
-   
-    // Test we don't exit box vertically
-    if (characterActualPosition.y < 0) { return 0; }
-    if (characterActualPosition.y + character->getHitbox().h > WinSize::getInstance().getSize().X) { return 0; }
+
+    // Depreciated, use of a moving camera instead
+        // Test we don't exit box vertically
+        // if (characterActualPosition.y < 0) { return 0; }
+        // if (characterActualPosition.y + character->getHitbox().h > WinSize::getInstance().getSize().X) { return 0; }
 
     // Get Hitbox in place where we would like to be
     Hitbox hitbox = (character->getHitbox());
@@ -93,10 +94,11 @@ int EntityManager::willCollideHorizontal(Character* character, int horizontalSpe
     // In which direction we would go
     if ((dir & LEFT) == LEFT) { characterActualPosition.x -= horizontalSpeed; }
     if ((dir & RIGHT) == RIGHT) { characterActualPosition.x += horizontalSpeed; }
-   
-    // Test we don't exit box
-    if (characterActualPosition.x < 0) { return false; }
-    if (characterActualPosition.x + character->getHitbox().w > WinSize::getInstance().getSize().X) { return false; }
+
+    // Depreciated, use of a moving camera instead
+        // Test we don't exit box
+        // if (characterActualPosition.x < 0) { return false; }
+        // if (characterActualPosition.x + character->getHitbox().w > WinSize::getInstance().getSize().X) { return false; }
 
     // Get Hitbox in place where we would like to be
     Hitbox hitbox = (character->getHitbox());
