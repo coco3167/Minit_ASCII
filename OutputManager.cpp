@@ -135,7 +135,7 @@ void OutputManager::setFixedConsoleSize(SHORT width, SHORT height)
     MoveWindow(hwndConsole, posX, posY, consoleWidthInPixels, consoleHeightInPixels, TRUE);
 }
 
-void OutputManager::display(Entity const& entity)
+/*void OutputManager::display(Entity const& entity)
 {
     WinSize const& winSize(WinSize::getInstance());
 
@@ -157,9 +157,9 @@ void OutputManager::display(Entity const& entity)
             }
         }
     }
-}
+}*/
 
-void OutputManager::displayAll(std::unordered_set<Entity*> entities)
+void OutputManager::displayEntities(std::unordered_set<Entity*> entities)
 {
     for (auto it = entities.begin(); it != entities.end(); ++it)
     {

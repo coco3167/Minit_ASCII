@@ -3,7 +3,6 @@
 
 #include "EntityManager.h"
 #include "InputManager.h"
-#include "Key.h"
 #include "Map.h"
 #include "OutputManager.h"
 
@@ -35,7 +34,7 @@ int main()
         outputManager.clearBuffer(); //Reset buffer
         inputManager.getInput();
         entityManager.updateAll();
-        outputManager.displayAll(entityManager.getEntities());
+        outputManager.displayEntities(entityManager.getEntities());
         outputManager.drawBuffer(); //Blit buffer on screen
 
         Sleep(100); //Let the CPU breath
