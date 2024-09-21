@@ -29,9 +29,6 @@ void Character::setDirection(int newDirection) { direction = newDirection; }
 
 void Character::moveVertical(int moveVerticalSpeed)
 {
-    if(direction == 0)
-        return;
-    
     if ((direction & UP) == UP)
         setPosition({getPosition().x , getPosition().y - moveVerticalSpeed});
 
@@ -41,9 +38,6 @@ void Character::moveVertical(int moveVerticalSpeed)
 
 void Character::moveHorizontal(int moveHorizontalSpeed)
 {
-    if(direction == 0)
-        return;
-    
     if ((direction & LEFT) == LEFT)
         setPosition({getPosition().x - moveHorizontalSpeed, getPosition().y});
     
@@ -65,6 +59,9 @@ bool Character::checkIsDead() const { return life <= 0; }
 void Character::update(EntityManager& entity_manager)
 {
     Entity::update(entity_manager);
+
+    if(direction == 0)
+        return;
     
     int moveHorizontalSpeed = entity_manager.willCollideHorizontal(this, getHorizontalSpeed());
     if (moveHorizontalSpeed > 0)
