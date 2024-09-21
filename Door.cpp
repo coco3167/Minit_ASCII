@@ -2,6 +2,8 @@
 
 #include "Player.h"
 
+Door::Door(int x, int y) : InteractableEntity(x, y, Sprite("doorClosed.txt")){}
+
 void Door::onInteract(Entity* interactor)
 {
     if(Player* player = dynamic_cast<Player*>(interactor))

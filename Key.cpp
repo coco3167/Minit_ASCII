@@ -15,7 +15,7 @@ void Key::onInteract(Entity* interactor)
     {
         player->setKey(player->getKey() + 1);
         //DESTROY KEY
-        destroy = true;
+        //destroy = true;
     }
     
 }
