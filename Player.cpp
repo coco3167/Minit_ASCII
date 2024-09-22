@@ -7,6 +7,8 @@ Player::Player(int x, int y): Character(x, y, Sprite("playerLeft.txt"))
     setSpawnPosition({x, y});
     setSpriteLeft(Sprite("playerLeft.txt"));
     setSpriteRight(Sprite("playerRight.txt"));
+    setSpriteDown(Sprite("playerDown.txt"));
+    setSpriteUp(Sprite("playerUp.txt"));
 }
 
 int Player::getKey() const { return key; }

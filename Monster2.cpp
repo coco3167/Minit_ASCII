@@ -10,6 +10,8 @@ Monster2::Monster2(int x, int y):
     timer.start();
     setSpriteLeft(Sprite("monster2.txt"));
     setSpriteRight(Sprite("monster2.txt"));
+    setSpriteDown(Sprite("monster2.txt"));
+    setSpriteUp(Sprite("monster2.txt"));
 }
 
 void Monster2::update(EntityManager& entity_manager)

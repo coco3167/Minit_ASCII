@@ -16,6 +16,8 @@ public:
     int getDamage() const;
     Sprite getLeftSprite() const;
     Sprite getRightSprite() const;
+    Sprite getUpSprite() const;
+    Sprite getDownSprite() const;
 
     // Setter
     void setDirection(int direction);
@@ -28,6 +30,8 @@ public:
     void setLife(int life);
     void setSpriteRight(Sprite sprite);
     void setSpriteLeft(Sprite sprite);
+    void setSpriteUp(Sprite sprite);
+    void setSpriteDown(Sprite sprite);
     
     //void attack(int damage) const;
     
@@ -43,4 +47,6 @@ private:
     int damage = 0;
     Sprite rightSprite = Sprite("");
     Sprite leftSprite = Sprite("");
+    Sprite downSprite = Sprite("");
+    Sprite upSprite = Sprite("");
 };

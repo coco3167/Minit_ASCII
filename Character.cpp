@@ -32,10 +32,16 @@ void Character::setDamage(int damage) { this->damage = damage; }
 void Character::moveVertical(int moveVerticalSpeed)
 {
     if ((direction & UP) == UP)
+    {
         setPosition({getPosition().x , getPosition().y - moveVerticalSpeed});
-
+        setSprite(getUpSprite());
+    }
     if ((direction & DOWN) == DOWN)
+    {
         setPosition({getPosition().x , getPosition().y + moveVerticalSpeed});
+        setSprite(getDownSprite());
+    }
+        
 }
 
 void Character::moveHorizontal(int moveHorizontalSpeed)
@@ -52,14 +58,7 @@ void Character::moveHorizontal(int moveHorizontalSpeed)
     }
 }
 
-void Character::receiveDamage(int damage)
-{
-    life -= damage;
-    //if (checkIsDead())
-    //{
-    //    DeathEvent();
-    //}
-}
+void Character::receiveDamage(int damage) { life -= damage; }
 
 void Character::setVerticalSpeed(int verticalSpeed) { this->verticalSpeed = verticalSpeed; }
 
@@ -71,6 +70,10 @@ void Character::setSpriteRight(Sprite sprite) { rightSprite = sprite; }
 
 void Character::setSpriteLeft(Sprite sprite) { leftSprite = sprite; }
 
+void Character::setSpriteUp(Sprite sprite) { upSprite = sprite; }
+
+void Character::setSpriteDown(Sprite sprite) { downSprite = sprite; }
+
 bool Character::checkIsDead() const { return life <= 0; }
 
 int Character::getDamage() const { return damage; }
@@ -78,6 +81,10 @@ int Character::getDamage() const { return damage; }
 Sprite Character::getLeftSprite() const { return leftSprite; }
 
 Sprite Character::getRightSprite() const { return rightSprite; }
+
+Sprite Character::getUpSprite() const { return upSprite; }
+
+Sprite Character::getDownSprite() const { return downSprite; }
 
 void Character::update(EntityManager& entity_manager)
 {
