@@ -4,14 +4,14 @@
 #include "Player.h"
 
 Monster2::Monster2(int x, int y):
-    Character(x, y, Sprite("monster2.txt"))
+    Character(x, y, Sprite("monster2_left.txt"))
 {
     setDamage(1);
     timer.start();
-    setSpriteLeft(Sprite("monster2.txt"));
-    setSpriteRight(Sprite("monster2.txt"));
-    setSpriteDown(Sprite("monster2.txt"));
-    setSpriteUp(Sprite("monster2.txt"));
+    setSpriteLeft(Sprite("monster2_left.txt"));
+    setSpriteRight(Sprite("monster2_right.txt"));
+    setSpriteDown(Sprite("monster2_left.txt"));
+    setSpriteUp(Sprite("monster2_right.txt"));
 }
 
 void Monster2::update(EntityManager& entity_manager)
