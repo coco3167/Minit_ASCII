@@ -1,6 +1,6 @@
 #include "EndFlag.h"
 
-EndFlag::EndFlag(int x, int y): InteractableEntity(x,y,Sprite("endFlag.txt"))
+EndFlag::EndFlag(int x, int y): InteractableEntity(x,y,Sprite("endFlag.txt")), triggered(false)
 {}
 
 void EndFlag::onInteract(Entity* interactor)
