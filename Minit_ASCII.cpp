@@ -25,7 +25,7 @@ int main()
         return EXIT_FAILURE;
     }
     
-    OutputManager outputManager(*myPlayer);
+    OutputManager outputManager(*myPlayer, 6);
     outputManager.setConsoleStyle();
     InputManager inputManager = InputManager(myPlayer);
     

@@ -25,7 +25,7 @@ bool Map::initMap()
     
     std::string line;
     std::string entityName;
-    int x, y;
+    int x, y ,w, h;
     
     // Reading the file line by line
     while (std::getline(file, line))
@@ -35,7 +35,11 @@ bool Map::initMap()
         // Try to read the name, x position and y position from the line
         if (iss >> entityName >> x >> y)
         {
-             entity_manager->createEntity(entityName, x, y);
+            if (entityName == "w" and iss >> w >> h)
+                entity_manager->createWall(x, y, w, h);
+            else
+                entity_manager->createEntity(entityName, x, y);
+            
         }
         else
         {

@@ -4,6 +4,18 @@
 #include <codecvt>
 #include <locale>
 
+Sprite::Sprite(int w, int h)
+{
+    for (int i = 0; i < w; i++)
+    {
+        data.emplace_back();
+        for (int j = 0; j < h; j++)
+        {
+            data[i] += 0x2588;
+        }
+    }
+}
+
 Sprite::Sprite(std::string ressourcePath)
 {
     std::wifstream file("assets/sprites/"+ressourcePath); // Open the file in wide mode

@@ -11,6 +11,7 @@
 #include "Monster2.h"
 #include "Player.h"
 #include "Spawn.h"
+#include "Wall.h"
 #include "WinSize.h"
 
 void EntityManager::updateAll()
@@ -47,6 +48,11 @@ void EntityManager::createEntity(std::string entityName, int x, int y)
     
     else if (entityName == "s")
         addEntity(new Spawn(x, y));
+}
+
+void EntityManager::createWall(int x, int y, int w, int h)
+{
+    addEntity(new Wall(x, y, w, h));
 }
 
 void EntityManager::addEntity(Entity* entity)
