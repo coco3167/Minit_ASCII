@@ -13,7 +13,13 @@
 #include "Spawn.h"
 #include "Teleporter.h"
 #include "Wall.h"
+#include "EndFlag.h"
 #include "WinSize.h"
+
+EntityManager::~EntityManager()
+{
+    removeAllEntities();
+}
 
 void EntityManager::updateAll()
 {
@@ -37,7 +43,12 @@ void EntityManager::resetEntities()
     }
 }
 
-void EntityManager::removeAllEntities() { entities.clear(); }
+void EntityManager::removeAllEntities()
+{
+    for (auto it = entities.begin(); it != entities.end(); it++)
+        delete *it;
+    entities.clear();
+}
 
 void EntityManager::createEntity(std::string entityName, int x, int y)
 {
@@ -45,29 +56,26 @@ void EntityManager::createEntity(std::string entityName, int x, int y)
     {
         Player* newPlayer = new Player(x, y);
         addEntity(newPlayer);
-        if (player == nullptr)
-        {
-            player = newPlayer;
-        }
+        if (player == nullptr) player = newPlayer;
     }
     else if (entityName == "k")
         addEntity(new Key(x, y));
-    
+
     else if (entityName == "d")
         addEntity(new Door(x, y));
-    
+
     else if (entityName == "m1")
         addEntity(new Monster1(x, y));
-    
+
     else if (entityName == "m2")
         addEntity(new Monster2(x, y));
-    
+
     else if (entityName == "s")
         addEntity(new Spawn(x, y));
 
     else if (entityName == "t")
     {
-        Teleporter* newTeleporter = new Teleporter(x, y); 
+        Teleporter* newTeleporter = new Teleporter(x, y);
         addEntity(newTeleporter);
         if (teleporter1 == nullptr)
             teleporter1 = newTeleporter;
@@ -77,6 +85,14 @@ void EntityManager::createEntity(std::string entityName, int x, int y)
             teleporter1->setOtherTeleporter(teleporter2);
             teleporter2->setOtherTeleporter(teleporter1);
         }
+    }
+
+    else if (entityName == "ef")
+    {
+        EndFlag* newEndFlag = new EndFlag(x, y);
+        addEntity(newEndFlag);
+        if (endFlag == nullptr)
+            endFlag = newEndFlag;
     }
 }
 
@@ -174,5 +190,10 @@ int EntityManager::willCollideHorizontal(Character* character, int horizontalSpe
     }
     // no collision detected
     return horizontalSpeed;
+}
+
+bool EntityManager::loop()
+{
+    return !endFlag->isTriggered();
 }
 

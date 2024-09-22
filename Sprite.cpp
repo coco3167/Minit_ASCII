@@ -23,7 +23,7 @@ Sprite::Sprite(std::string ressourcePath)
 
     if (!file.is_open())
     {
-        std::cerr << "Erreur : impossible d'ouvrir le fichier " << ressourcePath << std::endl;
+        std::cerr << "Erreur : impossible d'ouvrir le fichier: " << ressourcePath << std::endl;
         return;
     }
     std::wstring line;

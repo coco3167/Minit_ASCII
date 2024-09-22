@@ -25,7 +25,7 @@ int main()
     
     GameEngine gameEngine(entityManager, map, myPlayer, inputManager, outputManager);
     
-    while (true)
+    while (entityManager.loop())
     {
         gameEngine.update();
 
