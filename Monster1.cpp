@@ -9,6 +9,8 @@
 Monster1::Monster1(int x, int y): Character(x, y, Sprite("monster1.txt"))
 {
     setDamage(1);
+    setSpriteLeft(Sprite("monster1.txt"));
+    setSpriteRight(Sprite("monster1.txt"));
 }
 
 void Monster1::update(EntityManager& entity_manager)

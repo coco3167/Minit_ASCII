@@ -14,6 +14,8 @@ public:
     int getVerticalSpeed() const;
     bool checkIsDead() const;
     int getDamage() const;
+    Sprite getLeftSprite() const;
+    Sprite getRightSprite() const;
 
     // Setter
     void setDirection(int direction);
@@ -24,6 +26,8 @@ public:
     void setVerticalSpeed(int verticalSpeed);
     void setHorizontalSpeed(int horizontalSpeed);
     void setLife(int life);
+    void setSpriteRight(Sprite sprite);
+    void setSpriteLeft(Sprite sprite);
     
     //void attack(int damage) const;
     
@@ -37,5 +41,6 @@ private:
     int horizontalSpeed = 2;
     int verticalSpeed = 1;
     int damage = 0;
-    //bool dead = false;
+    Sprite rightSprite = Sprite("");
+    Sprite leftSprite = Sprite("");
 };

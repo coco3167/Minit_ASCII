@@ -8,6 +8,8 @@ Monster2::Monster2(int x, int y):
 {
     setDamage(1);
     timer.start();
+    setSpriteLeft(Sprite("monster2.txt"));
+    setSpriteRight(Sprite("monster2.txt"));
 }
 
 void Monster2::update(EntityManager& entity_manager)

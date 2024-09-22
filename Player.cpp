@@ -2,7 +2,12 @@
 
 #include "Spawn.h"
 
-Player::Player(int x, int y): Character(x, y, Sprite("player.txt")) { setSpawnPosition({x, y}); }
+Player::Player(int x, int y): Character(x, y, Sprite("playerLeft.txt"))
+{
+    setSpawnPosition({x, y});
+    setSpriteLeft(Sprite("playerLeft.txt"));
+    setSpriteRight(Sprite("playerRight.txt"));
+}
 
 int Player::getKey() const { return key; }
 

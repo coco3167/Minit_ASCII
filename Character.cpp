@@ -41,10 +41,15 @@ void Character::moveVertical(int moveVerticalSpeed)
 void Character::moveHorizontal(int moveHorizontalSpeed)
 {
     if ((direction & LEFT) == LEFT)
+    {
         setPosition({getPosition().x - moveHorizontalSpeed, getPosition().y});
-    
-    if ((direction & RIGHT) == RIGHT)    
+        setSprite(leftSprite);
+    }
+    if ((direction & RIGHT) == RIGHT)
+    {
         setPosition({getPosition().x + moveHorizontalSpeed, getPosition().y});
+        setSprite(rightSprite);
+    }
 }
 
 void Character::receiveDamage(int damage)
@@ -62,9 +67,17 @@ void Character::setHorizontalSpeed(int horizontalSpeed) { this->horizontalSpeed 
 
 void Character::setLife(int life) { this->life = life; }
 
+void Character::setSpriteRight(Sprite sprite) { rightSprite = sprite; }
+
+void Character::setSpriteLeft(Sprite sprite) { leftSprite = sprite; }
+
 bool Character::checkIsDead() const { return life <= 0; }
 
 int Character::getDamage() const { return damage; }
+
+Sprite Character::getLeftSprite() const { return leftSprite; }
+
+Sprite Character::getRightSprite() const { return rightSprite; }
 
 void Character::update(EntityManager& entity_manager)
 {
