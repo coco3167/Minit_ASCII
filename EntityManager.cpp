@@ -82,8 +82,13 @@ void EntityManager::createEntity(std::string entityName, int x, int y)
         else if (teleporter2 == nullptr)
         {
             teleporter2 = newTeleporter;
+            // make couple
             teleporter1->setOtherTeleporter(teleporter2);
             teleporter2->setOtherTeleporter(teleporter1);
+
+            // to make other couple of teleporter
+            teleporter1 = nullptr;
+            teleporter2 = nullptr;
         }
     }
 

@@ -41,7 +41,6 @@ void Character::moveVertical(int moveVerticalSpeed)
         setPosition({getPosition().x , getPosition().y + moveVerticalSpeed});
         setSprite(getDownSprite());
     }
-        
 }
 
 void Character::moveHorizontal(int moveHorizontalSpeed)
