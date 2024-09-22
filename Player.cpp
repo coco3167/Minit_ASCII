@@ -21,7 +21,7 @@ void Player::reset()
     setLife(1);
     setKey(0);
     setDamage(0);
-    setVerticalSpeed(1);
+    setVerticalSpeed(2);
     setHorizontalSpeed(2);
 }
 

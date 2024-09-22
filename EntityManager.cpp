@@ -11,6 +11,7 @@
 #include "Monster2.h"
 #include "Player.h"
 #include "Spawn.h"
+#include "Teleporter.h"
 #include "Wall.h"
 #include "WinSize.h"
 
@@ -63,6 +64,20 @@ void EntityManager::createEntity(std::string entityName, int x, int y)
     
     else if (entityName == "s")
         addEntity(new Spawn(x, y));
+
+    else if (entityName == "t")
+    {
+        Teleporter* newTeleporter = new Teleporter(x, y); 
+        addEntity(newTeleporter);
+        if (teleporter1 == nullptr)
+            teleporter1 = newTeleporter;
+        else if (teleporter2 == nullptr)
+        {
+            teleporter2 = newTeleporter;
+            teleporter1->setOtherTeleporter(teleporter2);
+            teleporter2->setOtherTeleporter(teleporter1);
+        }
+    }
 }
 
 void EntityManager::createWall(int x, int y, int w, int h)
@@ -72,7 +87,6 @@ void EntityManager::createWall(int x, int y, int w, int h)
 
 void EntityManager::addEntity(Entity* entity)
 {
-    std::cout << "adding entity" << std::endl;
     entities.insert(entity);
 }
 
@@ -80,10 +94,6 @@ void EntityManager::destroyEntity(Entity* entity)
 {
     entities.erase(entity);
     delete entity;
-
-    /*for (auto it = entities.begin(); it != entities.end(); ++it)
-        if (it->get() == entity)
-            entities.erase(it);*/
 }
 
 int EntityManager::willCollideVertical(Character* character, int verticalSpeed) const

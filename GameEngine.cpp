@@ -10,7 +10,7 @@ GameEngine::GameEngine(EntityManager entityManager, Map map, Player* myPlayer, I
 
 void GameEngine::update()
 {
-    if (timer.getElapsedSeconds(false) >= 8.f || myPlayer->checkIsDead()) // WARNING PUT 60.f
+    if (timer.getElapsedSeconds(false) >= 60.f || myPlayer->checkIsDead()) // WARNING PUT 60.f
     {
         restartGame();
         timer.restart();
@@ -30,13 +30,5 @@ void GameEngine::restartGame()
 
 void GameEngine::initPlayer() const
 {
-    /*myPlayer = entityManager.getPlayer();
-    if (myPlayer == NULL)
-        return false;*/
-
     myPlayer->reset();
-    myPlayer->setKey(0);
-    myPlayer->setDamage(0);
-    myPlayer->setVerticalSpeed(1);
-    myPlayer->setHorizontalSpeed(2);
 }
