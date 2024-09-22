@@ -6,7 +6,7 @@
 #include "Direction.h"
 #include "Player.h"
 
-Monster1::Monster1(int x, int y): Character(x, y, Sprite("monster1.txt"))
+Monster1::Monster1(int x, int y): Character(x, y, Sprite("monster1_left.txt"))
 {
     setDamage(1);
     setSpriteLeft(Sprite("monster1_left.txt"));
