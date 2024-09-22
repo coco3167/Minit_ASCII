@@ -21,8 +21,8 @@ void Player::reset()
     setLife(1);
     setKey(0);
     setDamage(0);
-    setVerticalSpeed(2);
-    setHorizontalSpeed(2);
+    setVerticalSpeed(3);
+    setHorizontalSpeed(3);
 }
 
 void Player::onInteract(Entity* interactor)
