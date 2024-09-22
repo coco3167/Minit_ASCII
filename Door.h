@@ -7,6 +7,7 @@ public:
     Door(int x, int y);
     void onInteract(Entity* interactor) override;
     void openDoor();
+    void reset() override;
 
 private:
     bool open = false;

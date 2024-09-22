@@ -10,10 +10,7 @@ int const S = 0x53;
 int const Q = 0x51;
 int const D = 0x44;
 
-InputManager::InputManager(Player* player)
-{
-    this->player = player;
-}
+InputManager::InputManager(Player& player) : player(player) {}
 
 void InputManager::getInput() const
 {
@@ -39,7 +36,7 @@ void InputManager::getInput() const
         movement |= RIGHT;
     }
 
-    player->setDirection(movement);
+    player.setDirection(movement);
         
     //Menuing
     if(GetAsyncKeyState(VK_ESCAPE))

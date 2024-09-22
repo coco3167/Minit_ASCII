@@ -5,9 +5,9 @@
 class InputManager
 {    
 private:
-    Player* player;
+    Player& player;
     
 public:
-    InputManager(Player* player);
+    InputManager(Player& player);
     void getInput() const;
 };

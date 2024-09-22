@@ -1,9 +1,7 @@
 #include <fstream>
 #include <iostream>
 
-#include "EntityManager.h"
-#include "InputManager.h"
-#include "Map.h"
+#include "GameEngine.h"
 #include "OutputManager.h"
 
 
@@ -17,25 +15,19 @@ int main()
     EntityManager entityManager = EntityManager();
     Map map = Map(&entityManager);
     map.initMap();
-
-    // Check if the player in entityManager has been initialized
     Player* myPlayer = entityManager.getPlayer();
     if (myPlayer == nullptr)
     {
         return EXIT_FAILURE;
     }
-    
     OutputManager outputManager(*myPlayer, 6);
-    outputManager.setConsoleStyle();
-    InputManager inputManager = InputManager(myPlayer);
+    InputManager inputManager = InputManager(*myPlayer);
+    
+    GameEngine gameEngine(entityManager, map, myPlayer, inputManager, outputManager);
     
     while (true)
     {
-        outputManager.clearBuffer(); //Reset buffer
-        inputManager.getInput();
-        entityManager.updateAll();
-        outputManager.displayEntities(entityManager.getEntities());
-        outputManager.drawBuffer(); //Blit buffer on screen
+        gameEngine.update();
 
         Sleep(100); //Let the CPU breath
     }

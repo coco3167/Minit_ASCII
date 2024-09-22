@@ -21,8 +21,14 @@ void Door::openDoor()
     {
         // OPEN DOOR
         open = true;
-        //destroy = true;
         setSprite(Sprite("doorOpened.txt"));
         setCollision(false);
     }
+}
+
+void Door::reset()
+{
+    InteractableEntity::reset();
+    setSprite(Sprite("doorClosed.txt"));
+    open = false;
 }

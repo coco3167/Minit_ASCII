@@ -50,11 +50,17 @@ void Character::moveHorizontal(int moveHorizontalSpeed)
 void Character::receiveDamage(int damage)
 {
     life -= damage;
-    if (checkIsDead())
-    {
-        DeathEvent();
-    }
+    //if (checkIsDead())
+    //{
+    //    DeathEvent();
+    //}
 }
+
+void Character::setVerticalSpeed(int verticalSpeed) { this->verticalSpeed = verticalSpeed; }
+
+void Character::setHorizontalSpeed(int horizontalSpeed) { this->horizontalSpeed = horizontalSpeed; }
+
+void Character::setLife(int life) { this->life = life; }
 
 bool Character::checkIsDead() const { return life <= 0; }
 
@@ -80,7 +86,9 @@ void Character::onInteract(Entity* interactor)
 {
 }
 
-void Character::DeathEvent()
+void Character::reset()
 {
-    setPosition({0,0});
+    InteractableEntity::reset();
+    setHidden(false);
+    setCollision(true);
 }

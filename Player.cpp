@@ -4,11 +4,9 @@
 
 Player::Player(int x, int y): Character(x, y, Sprite("player.txt")) { setSpawnPosition({x, y}); }
 
-Vector2 Player::getSpawnPosition() const { return spawnPosition; }
-
-void Player::setSpawnPosition(Vector2 spawnPosition) { this->spawnPosition = spawnPosition; }
-
 int Player::getKey() const { return key; }
+
+void Player::setKey(int key) { this->key = key; }
 
 void Player::addKey() { this->key++; }
 
@@ -17,10 +15,14 @@ void Player::update(EntityManager& entity_manager)
     Character::update(entity_manager);
 }
 
-void Player::DeathEvent()
+void Player::reset()
 {
-    Character::DeathEvent();
-    setPosition({getSpawnPosition().x,getSpawnPosition().y});
+    Character::reset();
+    setLife(1);
+    setKey(0);
+    setDamage(0);
+    setVerticalSpeed(1);
+    setHorizontalSpeed(2);
 }
 
 void Player::onInteract(Entity* interactor)
@@ -33,9 +35,3 @@ void Player::onInteract(Entity* interactor)
         receiveDamage(character->getDamage());
     }
 }
-
-/*void Player::DeathEvent(EntityManager& entity_manager)
-{
-    Character::DeathEvent(entity_manager);
-    setPosition({0, 0});
-}*/

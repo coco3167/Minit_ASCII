@@ -8,5 +8,6 @@ public:
     
     InteractableEntity(int x, int y, Sprite sprite);
     virtual void onInteract(Entity* interactor) = 0;
+    void reset() override;
     
 };

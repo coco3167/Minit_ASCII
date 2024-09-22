@@ -15,12 +15,11 @@ void Key::onInteract(Entity* interactor)
     if(player != nullptr)
     {
         player->addKey();
-        //DESTROY KEY
-        destroy = true;
+        setHidden(true);
+        setCollision(false);
     }
 }
 
-void Key::update(EntityManager& entity_manager)
-{
-    InteractableEntity::update(entity_manager);
-}
+void Key::update(EntityManager& entity_manager) { InteractableEntity::update(entity_manager); }
+
+void Key::reset() { InteractableEntity::reset(); }

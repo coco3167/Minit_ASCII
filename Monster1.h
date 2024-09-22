@@ -10,5 +10,6 @@ public:
     
     void update(EntityManager& entity_manager) override;
     void onInteract(Entity* interactor) override;
+    void reset() override;
     void setRandomDirection();
 };

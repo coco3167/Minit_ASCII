@@ -1,14 +1,43 @@
 ﻿#include "Monster2.h"
 
 #include "Direction.h"
+#include "Player.h"
 
 Monster2::Monster2(int x, int y):
-    Character(x, y, Sprite("monster2.txt")){}
+    Character(x, y, Sprite("monster2.txt"))
+{
+    setDamage(1);
+    timer.start();
+}
 
 void Monster2::update(EntityManager& entity_manager)
 {
     Character::update(entity_manager);
-    setRandomDirection();
+    if (timer.getElapsedSeconds(false) >= delayChangeDirection)
+    {
+        setRandomDirection();
+        timer.restart();
+    }
+}
+
+void Monster2::onInteract(Entity* interactor)
+{
+    Character::onInteract(interactor);
+    Player* player = dynamic_cast<Player*>(interactor);
+    
+    if(player != nullptr)
+    {
+        player->receiveDamage(getDamage());
+    }
+}
+
+void Monster2::reset()
+{
+    Character::reset();
+    setLife(1);
+    setDamage(1);
+    setVerticalSpeed(1);
+    setHorizontalSpeed(2);
 }
 
 void Monster2::setRandomDirection()

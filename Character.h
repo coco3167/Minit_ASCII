@@ -21,12 +21,15 @@ public:
     void moveHorizontal(int moveHorizontalSpeed);
     void moveVertical(int moveVertivalSpeed);
     void receiveDamage(int damage);
+    void setVerticalSpeed(int verticalSpeed);
+    void setHorizontalSpeed(int horizontalSpeed);
+    void setLife(int life);
     
     //void attack(int damage) const;
     
     void update(EntityManager& entity_manager) override;
     void onInteract(Entity* interactor) override;
-    virtual void DeathEvent();
+    void reset() override;
     
 private:
     int life = 1;

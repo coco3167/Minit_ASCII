@@ -20,13 +20,21 @@ void Monster1::update(EntityManager& entity_manager)
 void Monster1::onInteract(Entity* interactor)
 {
     Character::onInteract(interactor);
-    std::cout << "Monster1::onInteract" << std::endl;
     Player* player = dynamic_cast<Player*>(interactor);
     
     if(player != nullptr)
     {
         player->receiveDamage(getDamage());
     }
+}
+
+void Monster1::reset()
+{
+    Character::reset();
+    setLife(1);
+    setDamage(1);
+    setVerticalSpeed(1);
+    setHorizontalSpeed(2);
 }
 
 void Monster1::setRandomDirection()

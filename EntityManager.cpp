@@ -17,11 +17,26 @@
 void EntityManager::updateAll()
 {
     for (auto it = entities.begin() ; it != entities.end() ; it++)
+    {
         if((*it)->shouldDestroy())
             it = entities.erase(it);
         else
             (*it)->update(*this);
+    }
 }
+
+void EntityManager::resetEntities()
+{
+    for (auto it = entities.begin() ; it != entities.end() ; it++)
+    {
+        //(*it)->setPosition((*it)->getSpawnPosition());
+        //(*it)->setHidden(false);
+        //(*it)->setCollision((*it)->getStartCollision());
+        (*it)->reset();
+    }
+}
+
+void EntityManager::removeAllEntities() { entities.clear(); }
 
 void EntityManager::createEntity(std::string entityName, int x, int y)
 {
@@ -57,6 +72,7 @@ void EntityManager::createWall(int x, int y, int w, int h)
 
 void EntityManager::addEntity(Entity* entity)
 {
+    std::cout << "adding entity" << std::endl;
     entities.insert(entity);
 }
 
