@@ -19,11 +19,9 @@ public:
     Vector2 getPosition() const;
     Hitbox getHitbox() const;
     bool isHidden() const;
-    bool shouldDestroy() const;
     bool getCollision() const;
     Sprite const& getSprite() const;
     Vector2 getSpawnPosition() const;
-    bool getDestroyed() const;
     bool getStartCollision() const;
     
     // Setter
@@ -33,7 +31,6 @@ public:
     void setHidden(bool hidden);
     void setHitbox(int x, int y, int w, int h);
     void setCollision(bool collision);
-    void setDestroy(bool destroy);
     void setStartCollision(bool startCollision);
     
     virtual void update(EntityManager& entity_manager);
@@ -45,6 +42,5 @@ private:
     Sprite sprite;
     Hitbox hitbox;
     Vector2 spawnPosition;
-    bool destroy = false;
     bool collision = true;
 };

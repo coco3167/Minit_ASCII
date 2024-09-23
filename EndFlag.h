@@ -1,5 +1,6 @@
 #pragma once
 #include "InteractableEntity.h"
+
 class EndFlag: public InteractableEntity
 {
 public:

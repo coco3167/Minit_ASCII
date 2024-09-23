@@ -9,7 +9,10 @@ void Shooes::onInteract(Entity* interactor)
     Player* player = dynamic_cast<Player*>(interactor);
     if (player != nullptr)
     {
-        player->setHorizontalSpeed(horizontalSpeed);
-        player->setVerticalSpeed(verticalSpeed);
+        player->setHorizontalSpeed(player->getHorizontalSpeed() + 2);
+        player->setVerticalSpeed(player->getVerticalSpeed() + 2);
+        setHidden(true);
+        setCollision(false);
     }
 }
+

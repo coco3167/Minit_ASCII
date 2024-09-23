@@ -22,9 +22,6 @@ public:
     // Setter
     void setDirection(int direction);
     void setDamage(int damage);
-    void moveHorizontal(int moveHorizontalSpeed);
-    void moveVertical(int moveVertivalSpeed);
-    void receiveDamage(int damage);
     void setVerticalSpeed(int verticalSpeed);
     void setHorizontalSpeed(int horizontalSpeed);
     void setLife(int life);
@@ -33,7 +30,9 @@ public:
     void setSpriteUp(Sprite sprite);
     void setSpriteDown(Sprite sprite);
     
-    //void attack(int damage) const;
+    void moveHorizontal(int moveHorizontalSpeed);
+    void moveVertical(int moveVertivalSpeed);
+    void receiveDamage(int damage);
     
     void update(EntityManager& entity_manager) override;
     void onInteract(Entity* interactor) override;
@@ -45,8 +44,8 @@ private:
     int horizontalSpeed = 2;
     int verticalSpeed = 1;
     int damage = 0;
-    Sprite rightSprite = Sprite("");
-    Sprite leftSprite = Sprite("");
-    Sprite downSprite = Sprite("");
-    Sprite upSprite = Sprite("");
+    Sprite rightSprite = Sprite("playerUp.txt");
+    Sprite leftSprite = Sprite("playerUp.txt");
+    Sprite downSprite = Sprite("playerUp.txt");
+    Sprite upSprite = Sprite("playerUp.txt");
 };

@@ -1,6 +1,5 @@
 ﻿#include "Monster1.h"
 
-#include <iostream>
 #include <ostream>
 
 #include "Direction.h"

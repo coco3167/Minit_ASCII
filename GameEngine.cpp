@@ -1,7 +1,7 @@
 ﻿#include "GameEngine.h"
 
-GameEngine::GameEngine(EntityManager entityManager, Map map, Player* myPlayer, InputManager inputManager,
-    OutputManager outputManager) : entityManager(entityManager), map(map), myPlayer(myPlayer), inputManager(inputManager), outputManager(outputManager) 
+GameEngine::GameEngine(EntityManager entityManager, Map map, Player* myPlayer, InputManager inputManager, OutputManager outputManager) :
+entityManager(entityManager), map(map), myPlayer(myPlayer), inputManager(inputManager), outputManager(outputManager) 
 {
     timer.start();
     initPlayer();
@@ -28,7 +28,4 @@ void GameEngine::restartGame()
     initPlayer();
 }
 
-void GameEngine::initPlayer() const
-{
-    myPlayer->reset();
-}
+void GameEngine::initPlayer() const { myPlayer->reset(); }

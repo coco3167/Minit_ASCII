@@ -5,17 +5,11 @@
 
 WinSize* WinSize::instance = nullptr;
 
-void WinSize::setSize(COORD size)
-{
-    this->size = size;
-}
+void WinSize::setSize(COORD size) { this->size = size; }
 
-COORD const& WinSize::getSize() const
-{
-    return size;
-}
+COORD const& WinSize::getSize() const { return size; }
 
-WinSize::WinSize(COORD size) : size(size){}
+WinSize::WinSize(COORD size) : size(size) {}
 
 WinSize& WinSize::getInstance()
 {

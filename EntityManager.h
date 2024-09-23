@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include <unordered_set>
-#include "Character.h"
 #include "Player.h"
 #include "Teleporter.h"
 #include "EndFlag.h"
@@ -24,9 +23,9 @@ public:
     std::unordered_set<Entity*> getEntities() { return entities; }
 
 private:
-    Player* player;
-    Teleporter* teleporter1;
-    Teleporter* teleporter2;
-    EndFlag* endFlag;
+    Player* player = nullptr;
+    Teleporter* teleporter1 = nullptr;
+    Teleporter* teleporter2 = nullptr;
+    EndFlag* endFlag = nullptr;
     std::unordered_set<Entity*> entities;
 };

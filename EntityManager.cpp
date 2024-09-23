@@ -4,45 +4,33 @@
 
 #include "Direction.h"
 #include "Door.h"
-#include "Hitbox.h"
-#include "InteractableEntity.h"
 #include "Key.h"
 #include "Monster1.h"
 #include "Monster2.h"
-#include "Player.h"
 #include "Spawn.h"
-#include "Teleporter.h"
 #include "Wall.h"
-#include "EndFlag.h"
-#include "WinSize.h"
+#include "Shooes.h"
+
 
 EntityManager::~EntityManager()
 {
-    removeAllEntities();
+    //removeAllEntities();
 }
 
 void EntityManager::updateAll()
 {
     for (auto it = entities.begin() ; it != entities.end() ; it++)
-    {
-        if((*it)->shouldDestroy())
-            it = entities.erase(it);
-        else
-            (*it)->update(*this);
-    }
+        (*it)->update(*this);
 }
 
+// Reset entity settings to basic ones
 void EntityManager::resetEntities()
 {
     for (auto it = entities.begin() ; it != entities.end() ; it++)
-    {
-        //(*it)->setPosition((*it)->getSpawnPosition());
-        //(*it)->setHidden(false);
-        //(*it)->setCollision((*it)->getStartCollision());
         (*it)->reset();
-    }
 }
 
+// Free entities and clear unordered_set
 void EntityManager::removeAllEntities()
 {
     for (auto it = entities.begin(); it != entities.end(); it++)
@@ -50,30 +38,31 @@ void EntityManager::removeAllEntities()
     entities.clear();
 }
 
+// Create Entity from file
 void EntityManager::createEntity(std::string entityName, int x, int y)
 {
-    if (entityName == "p")
+    if (entityName == "p") // Player
     {
         Player* newPlayer = new Player(x, y);
         addEntity(newPlayer);
         if (player == nullptr) player = newPlayer;
     }
-    else if (entityName == "k")
+    else if (entityName == "k") // Key
         addEntity(new Key(x, y));
 
-    else if (entityName == "d")
+    else if (entityName == "d") // Door
         addEntity(new Door(x, y));
 
-    else if (entityName == "m1")
+    else if (entityName == "m1") // Monster1
         addEntity(new Monster1(x, y));
 
-    else if (entityName == "m2")
+    else if (entityName == "m2") // Monster 2
         addEntity(new Monster2(x, y));
 
-    else if (entityName == "s")
+    else if (entityName == "s") // Spawn
         addEntity(new Spawn(x, y));
 
-    else if (entityName == "t")
+    else if (entityName == "t") // Teleporter
     {
         Teleporter* newTeleporter = new Teleporter(x, y);
         addEntity(newTeleporter);
@@ -92,13 +81,16 @@ void EntityManager::createEntity(std::string entityName, int x, int y)
         }
     }
 
-    else if (entityName == "ef")
+    else if (entityName == "ef") // EndFlaf
     {
         EndFlag* newEndFlag = new EndFlag(x, y);
         addEntity(newEndFlag);
         if (endFlag == nullptr)
             endFlag = newEndFlag;
     }
+
+    else if (entityName == "sh") // Shooes
+        addEntity(new Shooes(x, y));
 }
 
 void EntityManager::createWall(int x, int y, int w, int h)
@@ -106,17 +98,20 @@ void EntityManager::createWall(int x, int y, int w, int h)
     addEntity(new Wall(x, y, w, h));
 }
 
+// Add entity to unordered_set 
 void EntityManager::addEntity(Entity* entity)
 {
     entities.insert(entity);
 }
 
+// free entity and clear it in the unordered_set
 void EntityManager::destroyEntity(Entity* entity)
 {
     entities.erase(entity);
     delete entity;
 }
 
+// Check vertical Collision
 int EntityManager::willCollideVertical(Character* character, int verticalSpeed) const
 {
     Vector2 characterActualPosition = character->getPosition();
@@ -157,6 +152,7 @@ int EntityManager::willCollideVertical(Character* character, int verticalSpeed) 
     return verticalSpeed;
 }
 
+// Check Horizontal Collision
 int EntityManager::willCollideHorizontal(Character* character, int horizontalSpeed) const
 {
     Vector2 characterActualPosition = character->getPosition();
@@ -197,8 +193,6 @@ int EntityManager::willCollideHorizontal(Character* character, int horizontalSpe
     return horizontalSpeed;
 }
 
-bool EntityManager::loop()
-{
-    return !endFlag->isTriggered();
-}
+// Main Loop boolean
+bool EntityManager::loop() { return !endFlag->isTriggered(); }
 

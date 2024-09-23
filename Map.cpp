@@ -13,7 +13,6 @@ Map::Map(EntityManager* entity_manager) : entity_manager(entity_manager) { }
 // Init Entity Manager with a level file
 bool Map::initMap()
 {
-    std::cout << "Map::initMap()" << std::endl;
     std::string fileName = "level.txt";
     std::ifstream file(fileName);
 

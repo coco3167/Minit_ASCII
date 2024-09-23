@@ -6,12 +6,6 @@
 
 class Buffer
 {
-private:
-	std::vector<CHAR_INFO> screenBuffer;
-	COORD size;
-	COORD coord;
-	SMALL_RECT writeRegion;
-	
 public:
 	Buffer();
 
@@ -25,5 +19,11 @@ public:
 	CHAR_INFO* getRawData();
 	
 	CHAR_INFO& at(int x, int y);
+
+private:
+	std::vector<CHAR_INFO> screenBuffer;
+	COORD size;
+	COORD coord;
+	SMALL_RECT writeRegion;
 };
 
