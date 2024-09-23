@@ -9,7 +9,10 @@ void Door::onInteract(Entity* interactor)
     if(Player* player = dynamic_cast<Player*>(interactor))
     {
         if(player->getKey())
+        {
             openDoor();
+            player->setKey(player->getKey() - 1);
+        }
     }
 }
 
