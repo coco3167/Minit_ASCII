@@ -10,7 +10,6 @@ public:
     WinSize() = delete;
     WinSize(const WinSize&) = delete;
     void operator=(const WinSize&) = delete;
-
     
     static WinSize& getInstance();
 

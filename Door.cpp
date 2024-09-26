@@ -11,6 +11,7 @@ void Door::onInteract(Entity* interactor)
         if(player->getKey())
         {
             openDoor();
+            player->setKey(player->getKey() - 1);
         }
     }
 }

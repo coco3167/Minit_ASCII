@@ -21,39 +21,22 @@ Vector2 Entity::getPosition() const { return {getHitbox().x,getHitbox().y}; }
 
 bool Entity::isHidden() const { return hidden; }
 
-bool Entity::shouldDestroy() const { return destroy; }
-
 bool Entity::getCollision() const { return collision; }
 
 Sprite const& Entity::getSprite() const { return sprite; }
 
 Vector2 Entity::getSpawnPosition() const { return spawnPosition; }
 
-bool Entity::getDestroyed() const { return destroy; }
-
 bool Entity::getStartCollision() const { return startCollision; }
 
 Hitbox Entity::getHitbox() const { return hitbox; }
-
-void Entity::setHitbox(int x, int y, int w, int h) { hitbox = {x,y,w,h}; }
-
-void Entity::setCollision(bool collision) { this->collision = collision; }
-
-void Entity::setDestroy(bool destroy) { this->destroy = destroy; }
-
-void Entity::setStartCollision(bool startCollision) { this->startCollision = startCollision; }
-
-void Entity::setSpawnPosition(Vector2 spawnPosition) { this->spawnPosition = spawnPosition; }
 
 /*
 ====================
 Setter
 ====================
 */
-void Entity::setSprite(const Sprite& sprite)
-{
-    this->sprite = sprite;
-}
+void Entity::setSprite(const Sprite& sprite) { this->sprite = sprite; }
 
 void Entity::setPosition(const Vector2& position)
 {
@@ -63,18 +46,18 @@ void Entity::setPosition(const Vector2& position)
 
 void Entity::setHidden(bool hidden) { this->hidden = hidden; }
 
+void Entity::setHitbox(int x, int y, int w, int h) { hitbox = {x,y,w,h}; }
+
+void Entity::setCollision(bool collision) { this->collision = collision; }
+
+void Entity::setStartCollision(bool startCollision) { this->startCollision = startCollision; }
+
+void Entity::setSpawnPosition(Vector2 spawnPosition) { this->spawnPosition = spawnPosition; }
 
 
 
 
 
+void Entity::update(EntityManager& entity_manager) { }
 
-void Entity::update(EntityManager& entity_manager)
-{
-    //std::cout << "Entity::update()";
-}
-
-void Entity::reset()
-{
-    setPosition(getSpawnPosition());
-}
+void Entity::reset() { setPosition(getSpawnPosition()); }

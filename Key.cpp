@@ -1,8 +1,5 @@
 ﻿#include "Key.h"
 
-#include <iostream>
-#include <ostream>
-
 #include "EntityManager.h"
 #include "Player.h"
 

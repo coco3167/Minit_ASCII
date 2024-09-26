@@ -5,8 +5,9 @@ class Door : public InteractableEntity
 {
 public:
     Door(int x, int y);
-    void onInteract(Entity* interactor) override;
+    
     void openDoor();
+    void onInteract(Entity* interactor) override;
     void reset() override;
 
 private:
